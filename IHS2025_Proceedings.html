@@ -448,7 +448,7 @@ function App() {
         ),
         React.createElement("div", { style: { display: "flex", gap: 0, marginTop: 16 } },
           ["program", "search", "threads", "graph", "actions", "chat", "about"].map(key => {
-            const labels = { program: "Program", search: "Explore", threads: "Threads", graph: "Network", actions: "Actions", chat: "Ask AI", about: "About" };
+            const labels = { program: "Program", search: "Explore", threads: "Threads", graph: "Network", actions: "Actions", chat: "Search", about: "About" };
             return React.createElement("button", { key, onClick: () => { setView(key); setActiveTag(null); setSearch(""); }, style: {
               padding: "10px 20px", background: view === key ? C.OCEAN_DARK : "transparent",
               border: "none", borderBottom: view === key ? "2px solid " + C.REEF_TEAL : "2px solid transparent",
@@ -723,84 +723,136 @@ function ActionTracker() {
 // AI CHAT COMPONENT
 // =====================================================
 function AIChatView() {
-  var _s = React.useState([]), messages = _s[0], setMessages = _s[1];
-  var _s2 = React.useState(""), input = _s2[0], setInput = _s2[1];
-  var _s3 = React.useState(false), loading = _s3[0], setLoading = _s3[1];
+  var _s = React.useState(""), query = _s[0], setQuery = _s[1];
+  var _s2 = React.useState([]), results = _s2[0], setResults = _s2[1];
+  var _s3 = React.useState(null), answer = _s3[0], setAnswer = _s3[1];
 
-  // Build context from all talk data
-  var contextStr = "You are a helpful assistant answering questions about the 2nd Island Health & Sustainability Conference (IHS 2025), held 18-20 November 2025 at Gump Station, Moorea, French Polynesia. Here is the conference data:\n\n";
-  allTalks.forEach(function(t) {
-    contextStr += "Day " + t.day + " | " + t.sessionTime + " | " + t.speaker + " (" + t.affil + ") | " + t.title + " | " + t.desc;
+  // Build searchable corpus
+  var corpus = allTalks.map(function(t) {
     var nk = t.speaker + "|" + t.title;
-    if (MEETING_NOTES[nk]) contextStr += " | NOTES: " + MEETING_NOTES[nk];
-    contextStr += "\n";
+    var notes = MEETING_NOTES[nk] || "";
+    return { speaker: t.speaker, affil: t.affil, title: t.title, desc: t.desc, notes: notes, day: t.day, time: t.sessionTime, type: t.sessionType, tags: t.tags || [] };
   });
-  contextStr += "\nACTION ITEMS:\n";
-  ACTION_ITEMS.forEach(function(a) { contextStr += "- [Day " + a.day + "/" + a.category + "/" + a.status + "] " + a.action + " (Owner: " + a.owner + ")\n"; });
 
-  function sendMessage() {
-    if (!input.trim() || loading) return;
-    var newMessages = messages.concat([{role: "user", content: input}]);
-    setMessages(newMessages);
-    setInput("");
-    setLoading(true);
+  function search(q) {
+    if (!q.trim()) { setResults([]); setAnswer(null); return; }
+    var terms = q.toLowerCase().split(/\s+/).filter(function(t){return t.length > 2});
+    
+    // Score each talk
+    var scored = corpus.map(function(item) {
+      var text = (item.speaker + " " + item.title + " " + item.desc + " " + item.notes + " " + item.tags.join(" ")).toLowerCase();
+      var score = 0;
+      terms.forEach(function(term) {
+        var re = new RegExp(term, "gi");
+        var matches = text.match(re);
+        if (matches) score += matches.length;
+        // Boost for title/speaker matches
+        if (item.speaker.toLowerCase().includes(term)) score += 5;
+        if (item.title.toLowerCase().includes(term)) score += 3;
+        if (item.tags.some(function(t){return t.toLowerCase().includes(term)})) score += 2;
+      });
+      return { item: item, score: score };
+    }).filter(function(s){return s.score > 0}).sort(function(a,b){return b.score - a.score});
 
-    fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1000,
-        system: contextStr,
-        messages: newMessages.map(function(m){return {role:m.role, content:m.content}})
-      })
-    }).then(function(r){return r.json()}).then(function(data) {
-      var reply = data.content && data.content[0] && data.content[0].text || "Sorry, I couldn't process that.";
-      setMessages(function(prev){return prev.concat([{role:"assistant",content:reply}])});
-      setLoading(false);
-    }).catch(function() {
-      setMessages(function(prev){return prev.concat([{role:"assistant",content:"Error connecting to AI. Please try again."}])});
-      setLoading(false);
-    });
+    setResults(scored.slice(0, 8));
+
+    // Generate a smart answer summary
+    if (scored.length > 0) {
+      var top = scored.slice(0, 5);
+      var speakerList = top.map(function(s){return s.item.speaker}).filter(function(v,i,a){return a.indexOf(v)===i});
+      
+      // Check for action item matches
+      var actionMatches = ACTION_ITEMS.filter(function(a) {
+        var atext = (a.action + " " + a.category + " " + a.owner).toLowerCase();
+        return terms.some(function(t){return atext.includes(t)});
+      });
+
+      var answerText = "Found " + scored.length + " relevant presentation" + (scored.length !== 1 ? "s" : "") + " from " + speakerList.join(", ") + ".";
+      
+      if (actionMatches.length > 0) {
+        answerText += "\n\n" + actionMatches.length + " related action item" + (actionMatches.length !== 1 ? "s" : "") + ":\n";
+        actionMatches.slice(0, 5).forEach(function(a) {
+          answerText += "\u2022 " + a.action + " (" + a.owner + ")\n";
+        });
+      }
+
+      // Extract relevant snippets from top result notes
+      if (top[0].item.notes) {
+        var noteLines = top[0].item.notes.split("\\n").filter(function(l){
+          return terms.some(function(t){return l.toLowerCase().includes(t)});
+        });
+        if (noteLines.length > 0) {
+          answerText += "\n\nKey details from " + top[0].item.speaker + ":\n" + noteLines.slice(0, 3).join("\n");
+        }
+      }
+
+      setAnswer(answerText);
+    } else {
+      setAnswer("No matching presentations found. Try different keywords \u2014 you can search by speaker name, topic, institution, or tag.");
+    }
   }
 
-  var suggestions = ["What were the key themes of the conference?", "What action items relate to seaweed?", "How do the four missions connect?", "What did Gilman propose about governance?", "Who discussed data sovereignty?"];
+  var suggestions = [
+    "seaweed bioeconomy", "mosquito SIT", "data sovereignty", "Gilman governance",
+    "CASUP Tetiaroa", "food systems mission", "coral restoration", "Indigenous mapping",
+    "iPlaces platform", "carbon credits", "Ocean ELP education", "whale personhood"
+  ];
 
-  return React.createElement("div", { style: { marginTop: 20, display: "flex", flexDirection: "column", height: "calc(100vh - 200px)" } },
-    React.createElement("h2", { style: { fontFamily: "'Fraunces', serif", fontSize: 22, color: C.PEARL, marginBottom: 6 } }, "Ask About the Conference"),
-    React.createElement("p", { style: { fontSize: 13, color: C.MIST, marginBottom: 12 } }, "Ask questions about any session, speaker, theme, or action item from IHS 2025."),
-    messages.length === 0 && React.createElement("div", { style: { display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 16 } },
+  return React.createElement("div", { style: { marginTop: 20 } },
+    React.createElement("h2", { style: { fontFamily: "'Fraunces', serif", fontSize: 22, color: C.PEARL, marginBottom: 6 } }, "Search the Conference"),
+    React.createElement("p", { style: { fontSize: 13, color: C.MIST, marginBottom: 16, lineHeight: 1.6 } }, "Ask about any speaker, topic, action item, or theme. Searches across all presentations, meeting notes, and action items."),
+    
+    // Suggestions
+    results.length === 0 && !answer && React.createElement("div", { style: { display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 16 } },
       suggestions.map(function(s) {
-        return React.createElement("button", { key: s, onClick: function(){setInput(s)}, style: {
+        return React.createElement("button", { key: s, onClick: function(){ setQuery(s); search(s); }, style: {
           padding: "6px 12px", borderRadius: 16, border: "1px solid " + C.REEF_TEAL + "44",
           background: "transparent", color: C.REEF_CYAN, fontSize: 12, cursor: "pointer", fontFamily: "'DM Sans', sans-serif"
         }}, s);
       })
     ),
-    React.createElement("div", { style: { flex: 1, overflowY: "auto", marginBottom: 12 } },
-      messages.map(function(m, i) {
-        return React.createElement("div", { key: i, style: { marginBottom: 12, display: "flex", justifyContent: m.role === "user" ? "flex-end" : "flex-start" } },
-          React.createElement("div", { style: {
-            maxWidth: "80%", padding: "10px 14px", borderRadius: 12,
-            background: m.role === "user" ? C.REEF_TEAL + "33" : C.OCEAN_MID,
-            border: "1px solid " + (m.role === "user" ? C.REEF_TEAL + "44" : "rgba(200,216,232,0.08)"),
-            fontSize: 13, color: C.PEARL, lineHeight: 1.6, fontFamily: "'DM Sans', sans-serif", whiteSpace: "pre-wrap"
-          }}, m.content)
-        );
-      }),
-      loading && React.createElement("div", { style: { color: C.MIST, fontSize: 13, padding: 10 } }, "Thinking...")
-    ),
-    React.createElement("div", { style: { display: "flex", gap: 8 } },
-      React.createElement("input", { type: "text", value: input, onChange: function(e){setInput(e.target.value)},
-        onKeyDown: function(e){if(e.key==="Enter")sendMessage()},
-        placeholder: "Ask about speakers, themes, actions...",
+
+    // Search bar
+    React.createElement("div", { style: { display: "flex", gap: 8, marginBottom: 16 } },
+      React.createElement("input", { type: "text", value: query,
+        onChange: function(e){ setQuery(e.target.value); },
+        onKeyDown: function(e){ if(e.key==="Enter") search(query); },
+        placeholder: "e.g. 'seaweed biofuel', 'Bossin mosquito', 'action items data'...",
         style: { flex: 1, padding: "12px 16px", borderRadius: 10, border: "1px solid " + C.REEF_TEAL + "44", background: C.OCEAN_MID, color: C.PEARL, fontSize: 14, fontFamily: "'DM Sans', sans-serif", outline: "none" }
       }),
-      React.createElement("button", { onClick: sendMessage, disabled: loading, style: {
+      React.createElement("button", { onClick: function(){ search(query); }, style: {
         padding: "12px 20px", borderRadius: 10, border: "none", background: C.REEF_TEAL, color: C.OCEAN_DARK,
-        fontSize: 14, fontWeight: 700, cursor: loading ? "wait" : "pointer", fontFamily: "'DM Sans', sans-serif"
-      }}, "Send")
-    )
+        fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "'DM Sans', sans-serif"
+      }}, "Search")
+    ),
+
+    // Answer summary
+    answer && React.createElement("div", { style: { padding: "16px 20px", background: C.OCEAN_MID, borderRadius: 12, border: "1px solid " + C.REEF_TEAL + "33", marginBottom: 16 } },
+      React.createElement("div", { style: { fontSize: 11, color: C.REEF_TEAL, fontWeight: 700, letterSpacing: "0.1em", marginBottom: 8 } }, "SUMMARY"),
+      React.createElement("div", { style: { fontSize: 13, color: C.PEARL, lineHeight: 1.7, whiteSpace: "pre-wrap", fontFamily: "'DM Sans', sans-serif" } }, answer)
+    ),
+
+    // Results
+    results.map(function(r, i) {
+      var item = r.item;
+      var dayColors = ["#1ABFB0", "#E8775F", "#E8C87A"];
+      return React.createElement("div", { key: i, style: { padding: "14px 18px", marginBottom: 8, background: C.OCEAN_MID, borderRadius: 10, border: "1px solid rgba(200,216,232,0.08)" } },
+        React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 } },
+          React.createElement("div", { style: { fontSize: 10, color: dayColors[item.day-1] || C.MIST, fontWeight: 700, letterSpacing: "0.1em" } }, "DAY " + item.day + " \u00b7 " + item.time + " \u00b7 " + item.type.toUpperCase()),
+          React.createElement("div", { style: { fontSize: 10, color: C.MIST, background: "rgba(26,191,176,0.12)", padding: "2px 8px", borderRadius: 8 } }, "score: " + r.score)
+        ),
+        React.createElement("div", { style: { fontSize: 13, color: C.REEF_CYAN, fontWeight: 600 } }, item.speaker, React.createElement("span", { style: { color: C.MIST, fontWeight: 400, fontSize: 12 } }, " \u00b7 " + item.affil)),
+        React.createElement("div", { style: { fontSize: 14, color: C.PEARL, fontWeight: 500, fontFamily: "'Fraunces', serif", margin: "4px 0" } }, item.title),
+        React.createElement("p", { style: { fontSize: 12, color: C.MIST, lineHeight: 1.6, margin: "6px 0 0" } }, item.desc),
+        item.notes && React.createElement("details", { style: { marginTop: 8 } },
+          React.createElement("summary", { style: { fontSize: 11, color: C.REEF_TEAL, cursor: "pointer", fontWeight: 600, fontFamily: "'DM Sans', sans-serif" } }, "\u25b6 Meeting Notes"),
+          React.createElement("div", { style: { fontSize: 11, color: C.MIST, lineHeight: 1.65, padding: "6px 10px", marginTop: 4, background: "rgba(11,22,40,0.5)", borderRadius: 6, borderLeft: "2px solid " + C.REEF_TEAL + "44", whiteSpace: "pre-wrap" } }, item.notes.split("\\n").join("\n"))
+        ),
+        React.createElement("div", { style: { display: "flex", gap: 5, flexWrap: "wrap", marginTop: 8 } },
+          item.tags.map(function(t) { return React.createElement("span", { key: t, onClick: function(){ setQuery(t); search(t); }, style: { padding: "2px 7px", borderRadius: 10, background: C.REEF_TEAL + "18", color: C.REEF_CYAN, fontSize: 10, cursor: "pointer" } }, t); })
+        )
+      );
+    })
   );
 }
 

@@ -8,6 +8,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body, #root { height: 100%; width: 100%; }
@@ -31,6 +32,181 @@ const C = {
 };
 
 const IPLACES_URL = "https://ipsandbox.rslv.xyz/";
+
+const MEETING_NOTES = {"Nils Gilman|Island Earth: Governing in the Planetary Age": "Key Arguments: Two ideas from the 1640s still constrain us: (1) human exceptionalism, (2) Westphalian sovereignty. Both undermined: machines exhibit thought; animals show intentionality. 'Global' = human flows; 'Planetary' = phenomena humans perturb but don't control.\\n\\nSolutions: Planetary subsidiarity; networked translocal governance (C40 model); functional planetary institutions (IAEA precedent); multi-species flourishing via technology.\\n\\nDiscussion: Bailey asked how supranational agencies emerge. Gilman: 75-90% compliance transformative; segmented sovereignty; crises drive change.\\n\\nACTION: Explore Moorea/FP as model for planetary subsidiarity.", "Hervé Bossin|Innovative Approaches to Vector-Borne Disease": "ILM: 76 years. 15 mosquito species in FP; 6 endemic, 3 invasive. Aedes aegypti: 1904→1986 all archipelagos. Threats: dengue, Zika, chikungunya, filariasis, avian malaria (Monarch of Fatu Hiva).\\n\\nSIT: Industrial facility Tahiti. PacSIT (WHO): Tetiaroa April 2025, Papara Nov 2025, Cook Islands next. The Brando: premium for mosquito-free. Previous elimination on Tuamotu atoll.\\n\\nACTION: Economists for SIT cost modeling. Hawaii avian malaria collaboration.", "Mayalen Zubia|Exploring Tropical Seaweed Diversity for a Sustainable Bioeconomy": "~531 species. 95% funding on temperate, <5% tropical. >1,000 DNA sequences; herbarium >5,000 specimens. Cultural: ho'opono pono, traditional medicine.\\n\\nNOT low-value phycocolloids. Instead: Turbinaria alginates (biomedical), >50 edible species, bioactives, biorefinery. REMU (2024-2028): ethnobiology, nutrition, health risks. Asparagopsis for methane. RIP BIOFENUA antibacterial/antifouling.\\n\\nACTION: Spore banking. Sanitary assessments. Innovation funding.", "Adrienne Correa|Te Ora Fenua | Te Mauri Ora (BioCode 2.0 / EthnoCode)": "BioCode 2.0: draft genomes 6-30 organisms with microbiome/virome. Schools/communities FIRST. 'Rori' sea cucumber model. Lessons: translator funding, in-person meetings, cultural components, iterative consent. Anderson on Local Contexts.\\n\\nACTION: Local Contexts labels. Materials in French/Tahitian.", "Cristian Monaco & Guillaume Mitta|Blue Food Systems: Advancing Tropical Oyster Farming": "80% food imported; >50% emissions from transport. Three low-trophic: algae, bivalves, cucumbers. Two native oysters, hatchery optimized, 16 months commercial. Solar-tide vs Polydora. Carbon controversy: individual CO2 release vs community-level sequestration.\\n\\nACTION: Research community-level carbon sequestration.", "Tamatoa Bambridge|Zone Atelier FP Long-Term Social-Ecological Research": "Took 2 years; previous attempts failed. ~100-150 researchers in FP. 'S' (social) key differentiator. Covers entire EEZ. Co-designing with non-academic communities essential.\\n\\nACTION: Build network across FP.", "Simon Ducatez|Towards a Strategy to Reduce Biodiversity Loss in FP": "14 extinct endemics (8.5% global). 15/26 endemic birds EN/CR. Aichi failed. No measurable FP framework. Prioritize: impact × importance × feasibility. Avoid 'green colonialism.'\\n\\nACTION: Measurable objectives. Recovery plans with communities.", "Craig Montell|Eliminating Mosquito-Borne Disease": "trpVa: deaf males 0% fertilization. Paradox: blind males outcompete wild-type. IR007: 3 EPA components, >12h (DEET ~4.5h), <$0.14/oz, safe. VectorFree co-founded.\\n\\nACTION: Montell-Bossin collaboration on engineered males.", "Tamatoa Bambridge & Simon Ducatez|Land-Sea Resilience": "4,500 km coastline, 124 islands. Workshop: 50+6, 27 talks, 3 roundtables. 39 programs, 11 databases, 35 actors. COCOPOL: 5 WPs, ~€2M, 5-8yr, >30 researchers.\\n\\nACTION: France-Berkeley Fund. Proceedings. Integrate DAG/Santé.", "Thierry Lison de Loma|Transforming Island Food Systems by 2030": "5-10yr aligned with SDA FP. Schools + tourism targets. BioPasifika, short circuits, cultural landscape. Full value chain. Participatory democracy; iPlaces data sovereignty.\\n\\nACTION: Timeline/milestones. Pilot islands.", "Thiago Correa|Energy: Decarbonizing FP Using Seaweed": "~350M liters fossil fuels. Seaweed ethanol ~10% substitution. No land competition or freshwater.\\n\\nACTION: Connect with Zubia cultivation and Scolari LCA.", "John Coates|International Bioeconomy & Macroalgae Center": "IBMC: macroalgae center. Indonesia world leader. Upstream→downstream biorefinery. Seaweed as FP circular bioeconomy feedstock.", "Mere Takoko|Blue Natural Capital": "Blue natural capital via whales. Nutrient cycling, carbon sequestration. Rights/personhood governance. Connects to Gilman's multi-species flourishing.", "David Scolari|Life Cycle Assessment: Biofuel from Macroalgae in FP": "Fossil: ~92-97 gCO2e/MJ. Renewables cut conversion 90%+. Co-products displace carbon-intense imports. Co-locate with renewables.\\n\\nACTION: Complete FP-specific LCA.", "Nigel Bradly|Blue Bioeconomy in Aotearoa New Zealand": "Model: Origination→Venture→Catalytic Investment→PoC→Scale. Save Our Scallops with Iwi. ORA Reefs: kina removal, reseeding, artificial reefs. Blue Nature Aotearoa mentorship.\\n\\nACTION: FP-NZ collaboration.", "Jenny Kahn|Taro and Carbon Sequestration": "Archaeological perspective. Traditional taro-marine relationship. Polynesian land management = productive, resilient food systems with climate co-benefits.", "Hannah Stewart|Land-Sea Restoration: Coral": "Coral Gardeners Moorea. Community-driven reef rehabilitation with livelihoods and tourism.", "Cedrik Lo|Marine Resources and Island Innovation": "Government fisheries management and innovation. Policy-bioeconomy connection.", "Adrien Conte|Blue Carbon Market Standards": "Blue carbon frameworks. Financing mechanism for island sustainability.\\n\\nACTION: Evaluate FP mangroves, seagrass, aquaculture potential.", "David Zilberman|Bioeconomy, Innovation, & Environmental Leadership": "Bio = resources + tech + sustainability. Types: biotech, resource, blue, circular, green. Supply chain thinking: innovation SC + product SC + circularity.\\n\\nMoorea: seaweed nutrient capture, algae wastewater, food waste conversion, local fertilizer, macroalgae breeding. Blue innovation hub.\\n\\nACTION: Supply chain framework per mission.", "Kawika Winter|Biocultural Restoration, Stewardship, and Governance": "Social-ecological restoration. He'eia NERR. Ecomimicry: 8 strategies. Loko i'a: habitat engineering + trophic management = āina momona. Mountain-to-sea approach. CBSFAs with community rules. Imu increase abundance/biomass/richness.\\n\\nACTION: NERR model for Moorea/Tetiaroa.", "Ali Hill|Social License to Operate: California's Seaweed Industry": "Pyramid: Rejection→Tolerance→Support→Endorsement. CA barriers: CEQA (64% NIMBY lawsuits), environment, community. Socialize→Listen→Integrate→Reflect.\\n\\nACTION: SLO for FP seaweed from outset.", "Jane Anderson|Rights and Representation, Including More Than Human": "Non-human rights frameworks. Local Contexts: TK/Biocultural Labels. Connection to BioCode 2.0.\\n\\nACTION: Continue Labels for FP.", "Mere Takoko|Whales: From Personhood to Indigenous Governance": "Legal personhood for whales. Indigenous governance models. Moananui initiative.", "Benoit Stoll & Tobias Fischer|Mapping Research Outputs: The Tetiaroa Use Case": "New: dGPS, multispectral drone, tide gauge. 1955-2025 imagery. 10/13 motu stable. Dynamic: Motu One gone, Tahuna Rahi at risk. Fischer ML: XGBoost + transfer learning. IRD Innovation nominee.\\n\\nTahuna iti: shift→vegetation gradient→bird biodiversity. 'Exceptional biodiversity from dynamics that will cause disappearance.'\\n\\nACTION: Pipeline across FP atolls.", "John Marchioni|Documenting Research Compliance": "BBNJ SBI requirement. Trust is local. Four user types. Sealed envelopes: identifiers, access, intentions. Tamper-detected. Measure by counting envelopes/relying parties.\\n\\nACTION: Evaluate for iPlaces.", "Warren Essey|Accelerating Research to Education Translation": "Kudu: instructor→AI draft→corrections→iteration (NOT generic). UCLA first AI course. KAI: Q&A now, complex feedback/real-time content/custom apps future. Researchers→AI→students loop.\\n\\nACTION: Kudu for Ocean ELP.", "Dave Vieglais|iPlace(s) Data Trust: A Place-Based Research Platform": "Contextual collapse problem. Workflow: submit→review→consent→DOI→permits→tracking→dashboards. Multilingual, AI-ready. P0 PoC (Nov 2025)→P1 MVP→P2 start-up→P3 scale (2027).\\n\\nACTION: Gump pilot.", "Hinano Murphy|Atitia Center — 20 Years of Culture & Education": "Land adjacent to Gump. Elders wanted traditional knowledge space. UC Berkeley agreement. Trust took 5 years: Tahitian language bridge, transparency, family integration. 'Ite deodora' — knowledge must be lived.", "Alex Kusenko|Measuring AI & Math Interventions with Kudu": "UCLA/UCSD independent validation. Improved engagement and outcomes for students lacking background.", "Vainui Marakai|Educational Marine Areas (AME)": "29 zones, 31 schools, 2,500+ students, 4 archipelagos. Know/Live/Transmit. Holistic. Children's sea councils. Since 2016: France 1,500+ areas, 200,000+ students. Consolidation phase.\\n\\nACTION: Connect EMA with iPlaces.", "Ali Hill|Workforce Development: Lessons from California's Central Valley": "Baby carrot: stagnant+waste→innovation→peak. Circularity revenue from waste. IBMC: place-based, people-based, circular, socially sustainable.\\n\\nACTION: Baby carrot thinking for seaweed.", "Tchiou, White Davies & Lison de Loma|Ocean Environmental Leadership Program (Ocean ELP)": "Gap: no Pacific ocean program. Mid-career leaders. Moorea: Gump, CRIOBE, LTER, TEK. 10-14 days, 30 participants. South-South learning. Premium: tuition+donors+Pacific scholarships.\\n\\nACTION: Curriculum and funding. Engage Beahrs alumni.", "Lolo Kleykamp|Measuring Impact: A Funder's Perspective": "SCF: inequality through entrepreneurship. ToC: inputs→activities→outputs→outcomes→impact. 'Promise outputs, not outcomes—but outcomes matter.' Workshop: ToC per mission.\\n\\nACTION: Each team complete ToC. Template for all proposals.", "Stanley Rowland & Frank Murphy|Tetiaroa CASUP: The First 10 Years": "Remote presentation. Three pillars. Surveys: French 11 (community) vs English 29 (funding/enforcement). Key gaps. CASUP 2.0: PRESERVE/INTEGRATE/FILL GAPS.\\n\\nACTION: Address local/international priority gaps.", "Tj Tate|Tetiaroa CASUP 2.0: The Next 10 Years": "Committee: Rowland/Tate, Murphy, Davies, Sage, Gaspar. Review→assess→survey→timeline.\\n\\nACTION: Work plan from survey. CASUP-2 Committee afternoon.", "Alex Wegmann|Palmyra": "Palmyra Atoll TNC. Comparative perspective in remote uninhabited setting.", "Jean Wencélius & Tamatoa Bambridge|Moorea & Tahiti Tereheamanu": "Southern Tahiti. Pilot 2025, scientific committee, citizen consultation April 2025. Needs: water, addictions, medicine, energy, health, food. Layout: heritage, transport, hub, hazards, land. Employment: agriculture, industry, training, tourism, family.\\n\\nACTION: Action plan with socio-ecological research.", "Megan Donahue & Michael Bruno|Hawai'i": "HIMB/Coconut Island. Poor tracking. Projects static. Trust varies (NCBI>BCO-DMO>collaborators). PI data explosion. Stations managing data? No. AI? Information manager aspirational.\\n\\nACTION: Automated tracking.", "Alex Mawyer|4Site: From Transects to Knowledge Transects": "Knowledge transects: observations/models/practices across islands. FAIR+CARE, anchored in place/history/power. Ridge-to-reef, island-to-archipelago. Engines of collective intelligence. Vision: 4Site→N-Site, stations as planetary sapience neurons.\\n\\nACTION: Minimum standards. Visualization tools.", "Richard Bailey|Honu Submarine International Sea Station Tahiti": "Two HOVs rated 1,200m. Mobile deep ocean platform. Democratizing mesopelagic access. Fraction of traditional cost.\\n\\nACTION: Feasibility study and partnerships.", "Hinano Murphy|Voice of the Ocean": "Indigenous Polynesian ocean stewardship. Cultural/spiritual connections to sea.", "Mere Takoko|Moananui: Indigenous-Led Marine Sanctuaries": "Indigenous governance rooted in traditional stewardship. Alternatives to state-imposed regimes.", "Hetereki Huke|Traditional Council Rapa Nui": "Te Mau Hatu o Rapa Nui: pre-contact through colonization to contemporary sovereignty reclamation. Repatriation issues (British Museum).", "Mary Therese Hattori|Pacific Islands Development Program": "PIDP since 1980. CROP (9 entities). PICL secretariat (20 entities incl. FP). Capacity building, gender equality, youth.\\n\\nACTION: Connect IH&S with PIDP/PICL networks.", "Bambridge, D'Arcy, Lilford, Mawyer & Wencélius|Mapping Indigenous Seas": "WDPA: 6 points, 114 km². Actual: 252 features, 27,413 km². Zones: ZPR/rahui, DIREN, UNESCO, leases, holothurie. Three problems: jurisdictional overlap, land-sea overlap, illegibility. Structural invisibility. Epistemic shift needed.\\n\\nACTION: Map all FP areas. Update WDPA. Methodology for fluid governance."};
+
+const ACTION_ITEMS = [
+  // Day 1
+  {action:"Breakout facilitators to prepare guiding questions for their mission groups",day:1,category:"logistics",owner:"Facilitators",status:"done"},
+  {action:"Explore Moorea/FP as a model case for planetary subsidiarity governance",day:1,category:"governance",owner:"Conference participants",status:"in-progress"},
+  {action:"Bossin to engage with economics experts on SIT cost modeling",day:1,category:"health",owner:"Hervé Bossin",status:"in-progress"},
+  {action:"Explore expanded collaboration with Hawaii on bird conservation/avian malaria",day:1,category:"health",owner:"Hervé Bossin",status:"planned"},
+  {action:"Develop spore banking program for long-term seaweed strain preservation",day:1,category:"bioeconomy",owner:"Mayalen Zubia",status:"planned"},
+  {action:"Conduct sanitary risk assessments (arsenic, biotoxins) before commercial seaweed development",day:1,category:"bioeconomy",owner:"Mayalen Zubia",status:"planned"},
+  {action:"Secure additional funding for high-value seaweed product innovation",day:1,category:"bioeconomy",owner:"Mayalen Zubia",status:"in-progress"},
+  {action:"Work with Jane Anderson on Local Contexts labels for BioCode 2.0 outputs",day:1,category:"data",owner:"Adrienne Correa / Jane Anderson",status:"in-progress"},
+  {action:"Make educational activities available in French and Tahitian",day:1,category:"education",owner:"Adrienne Correa",status:"in-progress"},
+  {action:"Further research on community-level carbon sequestration around oyster farms",day:1,category:"bioeconomy",owner:"Cristian Monaco",status:"planned"},
+  {action:"Continue building research community network across all FP archipelagos",day:1,category:"governance",owner:"Tamatoa Bambridge",status:"in-progress"},
+  {action:"Develop measurable biodiversity objectives for FP aligned with Climate Plan",day:1,category:"conservation",owner:"Simon Ducatez",status:"planned"},
+  {action:"Build recovery plans for ecosystems and endangered species with community co-construction",day:1,category:"conservation",owner:"Simon Ducatez",status:"planned"},
+  {action:"Continue Montell-Bossin collaboration on engineered sterile male mosquitoes for FP",day:1,category:"health",owner:"Craig Montell / Hervé Bossin",status:"in-progress"},
+  {action:"Submit France-Berkeley Fund proposal for land-sea resilience",day:1,category:"resilience",owner:"Simon Ducatez",status:"in-progress"},
+  {action:"Complete workshop proceedings report and shared reference documents",day:1,category:"resilience",owner:"Simon Ducatez / Tamatoa Bambridge",status:"in-progress"},
+  {action:"Integrate DAG and Direction de la Santé into collaborative projects",day:1,category:"resilience",owner:"RESIPOL team",status:"planned"},
+  {action:"Develop detailed food systems mission timeline and milestones",day:1,category:"food",owner:"Thierry Lison de Loma",status:"planned"},
+  {action:"Connect fuel potential mapping with seaweed cultivation and LCA work",day:1,category:"energy",owner:"Thiago Correa / Mayalen Zubia / David Scolari",status:"planned"},
+  {action:"Complete LCA modeling for FP-specific seaweed-to-biofuel pathways",day:1,category:"energy",owner:"David Scolari",status:"in-progress"},
+  {action:"Explore FP-NZ collaboration pathways for blue economy ventures",day:1,category:"bioeconomy",owner:"Nigel Bradly",status:"planned"},
+  {action:"Each mission group to produce reporting slide with vision and next steps",day:1,category:"logistics",owner:"Mission leads",status:"done"},
+  {action:"Evaluate blue carbon credit potential for FP mangroves, seagrass, and aquaculture",day:1,category:"finance",owner:"Adrien Conte / Tamatoa Bambridge",status:"planned"},
+  // Day 2
+  {action:"Apply supply chain framework to each IH&S mission for strategic planning",day:2,category:"bioeconomy",owner:"Mission teams",status:"planned"},
+  {action:"Explore NERR model applicability for Moorea and Tetiaroa",day:2,category:"governance",owner:"Kawika Winter / Neil Davies",status:"planned"},
+  {action:"Apply SLO framework to FP seaweed bioeconomy from the outset",day:2,category:"bioeconomy",owner:"Ali Hill",status:"planned"},
+  {action:"Continue developing Local Contexts labels for FP research outputs",day:2,category:"data",owner:"Jane Anderson",status:"in-progress"},
+  {action:"Apply shoreline monitoring ML pipeline across FP's other atolls",day:2,category:"data",owner:"Tobias Fischer / Benoit Stoll",status:"planned"},
+  {action:"Evaluate sealed envelope approach for iPlaces platform architecture",day:2,category:"data",owner:"John Marchioni / Dave Vieglais",status:"planned"},
+  {action:"Explore Kudu platform for Ocean ELP and FP educational programs",day:2,category:"education",owner:"Warren Essey / Larry Tchiou",status:"planned"},
+  {action:"Develop iPlaces pilot implementation for Gump Station",day:2,category:"data",owner:"Dave Vieglais / Erin Robinson",status:"in-progress"},
+  {action:"Connect EMA program with iPlaces for research-education integration",day:2,category:"education",owner:"Vainui Marakai / Erin Robinson",status:"planned"},
+  {action:"Apply baby carrot model thinking to seaweed product innovation in FP",day:2,category:"bioeconomy",owner:"Ali Hill / IBMC team",status:"planned"},
+  {action:"Develop Ocean ELP curriculum and secure funding for launch from Moorea",day:2,category:"education",owner:"Larry Tchiou / Maheata White Davies / Thierry Lison de Loma",status:"in-progress"},
+  {action:"Engage Beahrs ELP alumni network as resource for Ocean ELP",day:2,category:"education",owner:"David Zilberman / Larry Tchiou",status:"planned"},
+  {action:"Each mission team to complete Theory of Change using provided template",day:2,category:"logistics",owner:"Mission teams",status:"in-progress"},
+  {action:"Use Theory of Change template for all future project proposals",day:2,category:"logistics",owner:"All participants",status:"ongoing"},
+  {action:"Blue Carbon group to develop project proposal with funding targets",day:2,category:"finance",owner:"Tamatoa Bambridge",status:"in-progress"},
+  {action:"Mozeroa team to advance WHO evaluation framework",day:2,category:"health",owner:"Hervé Bossin",status:"in-progress"},
+  {action:"iPlaces group to define technical architecture and governance model",day:2,category:"data",owner:"Erin Robinson / Dave Vieglais",status:"in-progress"},
+  // Day 3
+  {action:"Address gaps between local and international stakeholder priorities in CASUP 2.0",day:3,category:"conservation",owner:"CASUP steering committee",status:"in-progress"},
+  {action:"CASUP 2.0 steering committee to establish timeline and work plan",day:3,category:"conservation",owner:"Tj Tate / Stanley Rowland",status:"in-progress"},
+  {action:"Develop Tereheamanu action plan integrating socio-ecological research",day:3,category:"governance",owner:"Jean Wencélius / Tamatoa Bambridge",status:"planned"},
+  {action:"Explore automated data tracking and acknowledgement systems for stations",day:3,category:"data",owner:"Megan Donahue / HIMB",status:"planned"},
+  {action:"Define minimum standards for knowledge transect participation (N-Site)",day:3,category:"data",owner:"Alex Mawyer / 4Site team",status:"planned"},
+  {action:"Develop visualization tools for cross-site knowledge transect comparison",day:3,category:"data",owner:"Alex Mawyer",status:"planned"},
+  {action:"Follow up on Honu submarine feasibility study and partnerships",day:3,category:"bioeconomy",owner:"Richard Bailey",status:"planned"},
+  {action:"Connect IH&S missions with PIDP regional networks and PICL platform",day:3,category:"governance",owner:"Mary Therese Hattori / Neil Davies",status:"planned"},
+  {action:"Systematically map all FP marine management areas to close data gap",day:3,category:"data",owner:"Tamatoa Bambridge / Alex Mawyer / Jean Wencélius",status:"in-progress"},
+  {action:"Engage WDPA to update French Polynesian marine protected area data",day:3,category:"data",owner:"Tamatoa Bambridge / Alex Mawyer",status:"planned"},
+  {action:"Develop methodology for representing fluid/relational governance in spatial databases",day:3,category:"data",owner:"Alex Mawyer / Oliver Lilford",status:"planned"},
+  {action:"CASUP-2 committee to produce work plan with milestones by end of 2025",day:3,category:"conservation",owner:"Tj Tate / Stanley Rowland",status:"in-progress"},
+  {action:"Produce iPlaces technical specification document",day:3,category:"data",owner:"Erin Robinson / Dave Vieglais",status:"in-progress"},
+];
+
+const THEMATIC_THREADS = [
+  {
+    id: "seaweed", name: "The Seaweed Story", icon: "🌿", color: "#4CAF50",
+    subtitle: "From biodiversity to bioeconomy — seaweed as transformative feedstock",
+    narrative: "Seaweed emerged as the conference's most integrative theme, connecting biodiversity science to food systems, energy, restoration, workforce development, and circular bioeconomy. The thread runs from fundamental taxonomy through life cycle assessment to market strategy.",
+    speakers: ["Mayalen Zubia", "Thiago Correa", "David Scolari", "John Coates", "Nigel Bradly", "Ali Hill", "David Zilberman", "Thierry Lison de Loma"],
+    stops: [
+      {speaker:"Mayalen Zubia",key:"531 species catalogued, REMU project on edible seaweeds, Turbinaria biorefinery concept, spore banking needed"},
+      {speaker:"Thiago Correa",key:"350M liters fossil fuel imported; seaweed ethanol could substitute 10%"},
+      {speaker:"David Scolari",key:"LCA framework: renewables cut conversion emissions 90%+; co-products provide credits"},
+      {speaker:"John Coates",key:"IBMC vision: Indonesia model, upstream-downstream integration for FP"},
+      {speaker:"Nigel Bradly",key:"NZ 5-stage model from origination to scale; lessons for FP ventures"},
+      {speaker:"Ali Hill",key:"Baby carrot innovation model; SLO for community acceptance; workforce development"},
+      {speaker:"David Zilberman",key:"Supply chain framework; circular bioeconomy; Moorea as blue innovation hub"},
+      {speaker:"Thierry Lison de Loma",key:"Food systems mission: seaweed in school/tourism food targets"}
+    ]
+  },
+  {
+    id: "governance", name: "The Governance Arc", icon: "⚖️", color: "#7C4DFF",
+    subtitle: "From planetary subsidiarity to Indigenous marine sovereignty",
+    narrative: "Governance was examined at every scale — from planetary institutions down to community fish houses. The arc traces a consistent argument: effective governance must be rooted in place, respect Indigenous knowledge, and extend rights beyond humans.",
+    speakers: ["Nils Gilman", "Tamatoa Bambridge", "Kawika Winter", "Jane Anderson", "Mere Takoko", "Hetereki Huke", "Alex Mawyer"],
+    stops: [
+      {speaker:"Nils Gilman",key:"Planetary subsidiarity; islands as governance laboratories; multi-species flourishing"},
+      {speaker:"Tamatoa Bambridge",key:"Zone Atelier: co-designing research with communities across FP's EEZ"},
+      {speaker:"Kawika Winter",key:"Biocultural restoration; ecomimicry; CBSFAs; fish houses increase abundance"},
+      {speaker:"Jane Anderson",key:"Local Contexts labels; Indigenous data sovereignty; more-than-human rights"},
+      {speaker:"Mere Takoko",key:"Whale personhood; Moananui Indigenous-led sanctuaries; blue natural capital"},
+      {speaker:"Hetereki Huke",key:"Rapa Nui traditional council; sovereignty reclamation; colonial repatriation"},
+      {speaker:"Alex Mawyer",key:"Mapping Indigenous seas; 252 features vs WDPA's 6; illegibility is structural"}
+    ]
+  },
+  {
+    id: "data", name: "The Data Challenge", icon: "🔗", color: "#00BCD4",
+    subtitle: "From contextual collapse to planetary sapience",
+    narrative: "A consistent thread emerged around the disconnect between where research happens and where its outputs end up. Multiple speakers converged on the need for place-based data infrastructure that respects local sovereignty while enabling global discovery.",
+    speakers: ["Benoit Stoll & Tobias Fischer", "John Marchioni", "Dave Vieglais", "Warren Essey", "Megan Donahue & Michael Bruno", "Alex Mawyer"],
+    stops: [
+      {speaker:"Benoit Stoll & Tobias Fischer",key:"70 years of Tetiaroa monitoring; ML pipeline for automated tracking; sentinel atoll"},
+      {speaker:"John Marchioni",key:"Sealed envelopes of metadata; trust is local; BBNJ compliance model"},
+      {speaker:"Dave Vieglais",key:"iPlaces: connecting place to planet; contextual collapse; phased 2025-2027 rollout"},
+      {speaker:"Warren Essey",key:"Kudu: AI-powered research-to-education translation in near real-time"},
+      {speaker:"Megan Donahue & Michael Bruno",key:"HIMB data challenges; PI turnover; trust varies by system; stations shouldn't manage data"},
+      {speaker:"Alex Mawyer",key:"Knowledge transects as FAIR+CARE convergence infrastructure; 4Site→N-Site vision"}
+    ]
+  },
+  {
+    id: "mosquito", name: "The Mosquito Mission", icon: "🦟", color: "#E91E63",
+    subtitle: "From gene editing to island-scale elimination",
+    narrative: "The public health mission centered on a compelling two-pronged approach: engineering better sterile males AND developing a superior repellent — with a clear pathway from lab to field via the WHO-sponsored PacSIT program.",
+    speakers: ["Hervé Bossin", "Craig Montell"],
+    stops: [
+      {speaker:"Hervé Bossin",key:"76 years ILM; SIT facility; PacSIT across Tetiaroa, Papara, Cook Islands; Brando partnership"},
+      {speaker:"Craig Montell",key:"trpVa deafness = 0% mating; blind males outcompete; IR007 repellent >12h; VectorFree"}
+    ]
+  },
+  {
+    id: "sites", name: "Sites Ateliers", icon: "🏝️", color: "#FF9800",
+    subtitle: "From Tetiaroa to the Pacific — place-based management at every scale",
+    narrative: "Day 3 grounded the conference in specific places, showing how the same principles of community engagement, Indigenous governance, and adaptive management play out differently at each site — from a private atoll to a confederation of communes to a pan-Pacific network.",
+    speakers: ["Stanley Rowland & Frank Murphy", "Tj Tate", "Jean Wencélius & Tamatoa Bambridge", "Alex Mawyer", "Mary Therese Hattori"],
+    stops: [
+      {speaker:"Stanley Rowland & Frank Murphy",key:"CASUP 10-year review; voluntary nonprofit stewardship; three-layer framework"},
+      {speaker:"Tj Tate",key:"CASUP 2.0 steering committee; bridging French/English stakeholder priorities"},
+      {speaker:"Jean Wencélius & Tamatoa Bambridge",key:"Tereheamanu: citizen consultation; resilience territory; co-management"},
+      {speaker:"Alex Mawyer",key:"4Site→N-Site; knowledge transects; stations as planetary sapience neurons"},
+      {speaker:"Mary Therese Hattori",key:"PIDP/CROP/PICL: regional architecture connecting 20 Pacific entities"}
+    ]
+  }
+];
+
+const GRAPH_CONNECTIONS = [
+  // Seaweed cluster
+  {from:"Mayalen Zubia",to:"Thiago Correa",theme:"seaweed biofuel feedstock",strength:3},
+  {from:"Mayalen Zubia",to:"David Scolari",theme:"seaweed LCA",strength:3},
+  {from:"Mayalen Zubia",to:"John Coates",theme:"IBMC macroalgae",strength:3},
+  {from:"Mayalen Zubia",to:"Ali Hill",theme:"seaweed SLO & workforce",strength:2},
+  {from:"Thiago Correa",to:"David Scolari",theme:"biofuel energy",strength:3},
+  {from:"David Zilberman",to:"John Coates",theme:"bioeconomy supply chains",strength:2},
+  {from:"David Zilberman",to:"Ali Hill",theme:"workforce & bioeconomy",strength:2},
+  {from:"Nigel Bradly",to:"Ali Hill",theme:"blue economy innovation",strength:2},
+  // Governance cluster
+  {from:"Nils Gilman",to:"Tamatoa Bambridge",theme:"governance & sovereignty",strength:2},
+  {from:"Nils Gilman",to:"Mere Takoko",theme:"multi-species flourishing",strength:3},
+  {from:"Tamatoa Bambridge",to:"Kawika Winter",theme:"biocultural governance",strength:3},
+  {from:"Tamatoa Bambridge",to:"Alex Mawyer",theme:"Indigenous seas mapping",strength:3},
+  {from:"Jane Anderson",to:"Adrienne Correa",theme:"Local Contexts / BioCode",strength:3},
+  {from:"Jane Anderson",to:"Dave Vieglais",theme:"data sovereignty labels",strength:2},
+  {from:"Mere Takoko",to:"Hetereki Huke",theme:"Indigenous governance",strength:2},
+  {from:"Mere Takoko",to:"Kawika Winter",theme:"Indigenous stewardship",strength:2},
+  // Data cluster
+  {from:"Benoit Stoll & Tobias Fischer",to:"Dave Vieglais",theme:"place-based data",strength:2},
+  {from:"John Marchioni",to:"Dave Vieglais",theme:"iPlaces compliance",strength:3},
+  {from:"Dave Vieglais",to:"Erin Robinson",theme:"iPlaces platform",strength:3},
+  {from:"Warren Essey",to:"Dave Vieglais",theme:"research-to-education pipeline",strength:2},
+  {from:"Alex Mawyer",to:"Megan Donahue & Michael Bruno",theme:"4Site network / HIMB",strength:3},
+  // Health cluster
+  {from:"Hervé Bossin",to:"Craig Montell",theme:"SIT & mosquito genetics",strength:3},
+  // Food cluster
+  {from:"Cristian Monaco & Guillaume Mitta",to:"Thierry Lison de Loma",theme:"food systems aquaculture",strength:3},
+  {from:"Thierry Lison de Loma",to:"David Zilberman",theme:"food bioeconomy",strength:2},
+  // Sites cluster
+  {from:"Stanley Rowland & Frank Murphy",to:"Tj Tate",theme:"CASUP Tetiaroa",strength:3},
+  {from:"Jean Wencélius & Tamatoa Bambridge",to:"Alex Mawyer",theme:"Moorea-Tahiti 4Site",strength:3},
+  {from:"Mary Therese Hattori",to:"Tamatoa Bambridge",theme:"Pacific regional networks",strength:2},
+  // Cross-cluster
+  {from:"Hinano Murphy",to:"Adrienne Correa",theme:"Atitia Center education",strength:2},
+  {from:"Hinano Murphy",to:"Vainui Marakai",theme:"education & culture",strength:2},
+  {from:"Lolo Kleykamp",to:"Neil Davies",theme:"impact framework",strength:2},
+  {from:"Adrien Conte",to:"Tamatoa Bambridge",theme:"blue carbon finance",strength:2},
+  {from:"Simon Ducatez",to:"Benoit Stoll & Tobias Fischer",theme:"Tetiaroa biodiversity & GIS",strength:2},
+  {from:"Richard Bailey",to:"Stanley Rowland & Frank Murphy",theme:"Tetiaroa Society",strength:3},
+];
 
 const conferenceData = {
   title: "2nd Island Health & Sustainability Conference",
@@ -202,7 +378,11 @@ function TalkCard({ talk, expanded, onToggle }) {
       React.createElement("span", { style: { color: C.MIST, fontSize: 18, transform: expanded ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s", flexShrink: 0, marginTop: 2 } }, "\u25be")
     ),
     expanded && React.createElement("div", { style: { marginTop: 12, paddingTop: 12, borderTop: "1px solid rgba(200,216,232,0.1)" } },
-      React.createElement("p", { style: { fontSize: 13, color: C.MIST, lineHeight: 1.65, margin: 0, fontFamily: "'DM Sans', sans-serif" } }, talk.desc),
+      React.createElement("p", { style: { fontSize: 13, color: C.MIST, lineHeight: 1.65, margin: "0 0 8px", fontFamily: "'DM Sans', sans-serif" } }, talk.desc),
+            (function() { var nk = talk.speaker + "|" + talk.title; var n = MEETING_NOTES[nk]; if (!n) return null; return React.createElement("details", { style: { marginTop: 8 }, onClick: function(e) { e.stopPropagation(); } },
+              React.createElement("summary", { style: { fontSize: 12, color: C.REEF_TEAL, cursor: "pointer", fontWeight: 600, fontFamily: "'DM Sans', sans-serif", marginBottom: 6 } }, "\u25b6 Full Meeting Notes & Action Items"),
+              React.createElement("div", { style: { fontSize: 12, color: C.MIST, lineHeight: 1.7, fontFamily: "'DM Sans', sans-serif", padding: "8px 12px", background: "rgba(11,22,40,0.5)", borderRadius: 8, borderLeft: "3px solid " + C.REEF_TEAL + "44", whiteSpace: "pre-wrap" } }, n.split("\\n").join("\n"))
+            ); })(),
       React.createElement("div", { style: { display: "flex", gap: 6, flexWrap: "wrap", marginTop: 10 } },
         (talk.tags || []).map(t => React.createElement("span", { key: t, style: { padding: "2px 8px", borderRadius: 12, background: "rgba(26,191,176,0.12)", color: C.REEF_CYAN, fontSize: 10, fontFamily: "'DM Sans', sans-serif" } }, t))
       )
@@ -224,6 +404,10 @@ function SessionBlock({ session, dayColor }) {
       React.createElement("h4", { style: { margin: "0 0 4px", fontSize: 16, color: C.PEARL, fontFamily: "'Fraunces', serif", fontWeight: 600 } }, session.title),
       session.chair && React.createElement("p", { style: { margin: "0 0 10px", fontSize: 12, color: C.MIST, fontFamily: "'DM Sans', sans-serif" } }, "Chair: " + session.chair),
       session.desc && !(session.talks && session.talks.length) && React.createElement("p", { style: { margin: "0 0 10px", fontSize: 13, color: C.MIST, lineHeight: 1.55, fontFamily: "'DM Sans', sans-serif" } }, session.desc),
+      session.notes && React.createElement("details", { style: { marginBottom: 10 } },
+        React.createElement("summary", { style: { fontSize: 12, color: C.REEF_TEAL, cursor: "pointer", fontWeight: 600, fontFamily: "'DM Sans', sans-serif", marginBottom: 4 } }, "\u25b6 Full Meeting Notes"),
+        React.createElement("div", { style: { fontSize: 12, color: C.MIST, lineHeight: 1.7, fontFamily: "'DM Sans', sans-serif", padding: "8px 12px", background: "rgba(11,22,40,0.5)", borderRadius: 8, borderLeft: "3px solid " + C.REEF_TEAL + "44", whiteSpace: "pre-wrap" } }, session.notes)
+      ),
       (session.talks || []).map((talk, i) => React.createElement(TalkCard, { key: i, talk, expanded: expandedTalk === i, onToggle: () => setExpandedTalk(expandedTalk === i ? null : i) }))
     )
   );
@@ -263,8 +447,8 @@ function App() {
           } }, "\ud83d\udd17 Open iPlaces Repository")
         ),
         React.createElement("div", { style: { display: "flex", gap: 0, marginTop: 16 } },
-          ["program", "search", "about"].map(key => {
-            const labels = { program: "Program", search: "Explore", about: "About" };
+          ["program", "search", "threads", "graph", "actions", "chat", "about"].map(key => {
+            const labels = { program: "Program", search: "Explore", threads: "Threads", graph: "Network", actions: "Actions", chat: "Ask AI", about: "About" };
             return React.createElement("button", { key, onClick: () => { setView(key); setActiveTag(null); setSearch(""); }, style: {
               padding: "10px 20px", background: view === key ? C.OCEAN_DARK : "transparent",
               border: "none", borderBottom: view === key ? "2px solid " + C.REEF_TEAL : "2px solid transparent",
@@ -315,6 +499,10 @@ function App() {
             React.createElement("div", { style: { fontSize: 13, color: C.REEF_CYAN, fontWeight: 600 } }, talk.speaker, React.createElement("span", { style: { color: C.MIST, fontWeight: 400, fontSize: 12 } }, " \u00b7 " + talk.affil)),
             React.createElement("div", { style: { fontSize: 14, color: C.PEARL, fontWeight: 500, fontFamily: "'Fraunces', serif", margin: "4px 0" } }, talk.title),
             React.createElement("p", { style: { fontSize: 12, color: C.MIST, lineHeight: 1.6, margin: "8px 0 0" } }, talk.desc),
+            (function() { var nk = talk.speaker + "|" + talk.title; var n = MEETING_NOTES[nk]; if (!n) return null; return React.createElement("details", { style: { marginTop: 6 } },
+              React.createElement("summary", { style: { fontSize: 11, color: C.REEF_TEAL, cursor: "pointer", fontWeight: 600, fontFamily: "'DM Sans', sans-serif", marginBottom: 4 } }, "\u25b6 Full Meeting Notes & Action Items"),
+              React.createElement("div", { style: { fontSize: 11, color: C.MIST, lineHeight: 1.65, fontFamily: "'DM Sans', sans-serif", padding: "6px 10px", background: "rgba(11,22,40,0.5)", borderRadius: 6, borderLeft: "2px solid " + C.REEF_TEAL + "44", whiteSpace: "pre-wrap" } }, n.split("\\n").join("\n"))
+            ); })(),
             React.createElement("div", { style: { display: "flex", gap: 5, flexWrap: "wrap", marginTop: 8 } },
               (talk.tags || []).map(t => React.createElement("span", { key: t, onClick: () => setActiveTag(t), style: { padding: "2px 7px", borderRadius: 10, background: C.REEF_TEAL + "18", color: C.REEF_CYAN, fontSize: 10, cursor: "pointer" } }, t))
             )
@@ -358,9 +546,260 @@ function App() {
               )
             )
           )
-        )
+        ),
+
+
+        // THEMATIC THREADS VIEW
+        view === "threads" && React.createElement("div", { style: { marginTop: 20 } },
+          React.createElement("h2", { style: { fontFamily: "'Fraunces', serif", fontSize: 22, color: C.PEARL, marginBottom: 6 } }, "Thematic Threads"),
+          React.createElement("p", { style: { fontSize: 13, color: C.MIST, marginBottom: 20, lineHeight: 1.6 } }, "Curated narrative pathways through the conference \u2014 follow how ideas connected across days, sessions, and speakers."),
+          THEMATIC_THREADS.map(function(thread) {
+            return React.createElement("div", { key: thread.id, style: { marginBottom: 24, padding: "20px", background: C.OCEAN_MID, borderRadius: 12, border: "1px solid " + thread.color + "33" } },
+              React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 10, marginBottom: 8 } },
+                React.createElement("span", { style: { fontSize: 24 } }, thread.icon),
+                React.createElement("div", null,
+                  React.createElement("h3", { style: { margin: 0, fontSize: 17, fontFamily: "'Fraunces', serif", color: thread.color } }, thread.name),
+                  React.createElement("div", { style: { fontSize: 12, color: C.MIST } }, thread.subtitle)
+                )
+              ),
+              React.createElement("p", { style: { fontSize: 13, color: C.MIST, lineHeight: 1.65, margin: "10px 0 14px" } }, thread.narrative),
+              React.createElement("div", { style: { borderLeft: "3px solid " + thread.color + "44", paddingLeft: 16 } },
+                thread.stops.map(function(stop, i) {
+                  return React.createElement("div", { key: i, style: { display: "flex", gap: 10, marginBottom: 10, alignItems: "flex-start" } },
+                    React.createElement("div", { style: { width: 10, height: 10, borderRadius: "50%", background: thread.color, flexShrink: 0, marginTop: 4 } }),
+                    React.createElement("div", null,
+                      React.createElement("div", { style: { fontSize: 12, color: C.REEF_CYAN, fontWeight: 600 } }, stop.speaker),
+                      React.createElement("div", { style: { fontSize: 12, color: C.MIST, lineHeight: 1.5 } }, stop.key)
+                    )
+                  );
+                })
+              )
+            );
+          })
+        ),
+
+        // CONNECTION GRAPH VIEW
+        view === "graph" && React.createElement("div", { style: { marginTop: 20 } },
+          React.createElement("h2", { style: { fontFamily: "'Fraunces', serif", fontSize: 22, color: C.PEARL, marginBottom: 6 } }, "Speaker Connection Network"),
+          React.createElement("p", { style: { fontSize: 13, color: C.MIST, marginBottom: 16, lineHeight: 1.6 } }, "How speakers and ideas connect across the conference. Hover over nodes and links to explore relationships."),
+          React.createElement(NetworkGraph, null)
+        ),
+
+        // ACTION TRACKER VIEW
+        view === "actions" && React.createElement(ActionTracker, null),
+
+        // AI CHAT VIEW
+        view === "chat" && React.createElement(AIChatView, null),
 
       )
+    )
+  );
+}
+
+// =====================================================
+// NETWORK GRAPH COMPONENT
+// =====================================================
+function NetworkGraph() {
+  var svgRef = React.useRef(null);
+  React.useEffect(function() {
+    if (!svgRef.current || typeof d3 === 'undefined') return;
+    var svg = d3.select(svgRef.current);
+    svg.selectAll("*").remove();
+    var width = 860, height = 500;
+    
+    // Build nodes from connections
+    var nodeMap = {};
+    GRAPH_CONNECTIONS.forEach(function(c) {
+      if (!nodeMap[c.from]) nodeMap[c.from] = {id: c.from, count: 0};
+      if (!nodeMap[c.to]) nodeMap[c.to] = {id: c.to, count: 0};
+      nodeMap[c.from].count++;
+      nodeMap[c.to].count++;
+    });
+    var nodes = Object.values(nodeMap);
+    var links = GRAPH_CONNECTIONS.map(function(c) { return {source: c.from, target: c.to, theme: c.theme, strength: c.strength}; });
+
+    var simulation = d3.forceSimulation(nodes)
+      .force("link", d3.forceLink(links).id(function(d){return d.id}).distance(120))
+      .force("charge", d3.forceManyBody().strength(-300))
+      .force("center", d3.forceCenter(width/2, height/2))
+      .force("collision", d3.forceCollide(30));
+
+    var g = svg.append("g");
+
+    // Zoom
+    svg.call(d3.zoom().scaleExtent([0.3, 3]).on("zoom", function(e) { g.attr("transform", e.transform); }));
+
+    var link = g.selectAll("line").data(links).join("line")
+      .attr("stroke", "#1ABFB044").attr("stroke-width", function(d){return d.strength});
+
+    var node = g.selectAll("g.node").data(nodes).join("g").attr("class", "node")
+      .call(d3.drag().on("start",function(e,d){if(!e.active)simulation.alphaTarget(0.3).restart();d.fx=d.x;d.fy=d.y})
+        .on("drag",function(e,d){d.fx=e.x;d.fy=e.y}).on("end",function(e,d){if(!e.active)simulation.alphaTarget(0);d.fx=null;d.fy=null}));
+
+    node.append("circle").attr("r", function(d){return 6+d.count*2}).attr("fill", "#1ABFB0").attr("stroke","#0B1628").attr("stroke-width",2);
+    node.append("text").text(function(d){return d.id.split(" ")[d.id.split(" ").length-1]})
+      .attr("dx", 12).attr("dy", 4).attr("fill","#C8D8E8").attr("font-size","10px").attr("font-family","'DM Sans', sans-serif");
+
+    // Tooltip
+    var tooltip = svg.append("g").attr("class","tooltip").style("display","none");
+    tooltip.append("rect").attr("rx",6).attr("fill","#132B4A").attr("stroke","#1ABFB044");
+    tooltip.append("text").attr("fill","#F0EDE6").attr("font-size","11px").attr("font-family","'DM Sans', sans-serif");
+
+    node.on("mouseover", function(e, d) {
+      var connected = links.filter(function(l){return l.source.id===d.id||l.target.id===d.id});
+      var themes = connected.map(function(l){return l.theme}).join(", ");
+      link.attr("stroke", function(l){return (l.source.id===d.id||l.target.id===d.id) ? "#3EEADB" : "#1ABFB012"})
+        .attr("stroke-width", function(l){return (l.source.id===d.id||l.target.id===d.id) ? l.strength+1 : 0.5});
+      d3.select(this).select("circle").attr("fill","#3EEADB").attr("r", 8+d.count*2);
+      tooltip.style("display",null);
+      tooltip.select("text").text(d.id + " — " + themes).attr("x",8).attr("y",16);
+      var bb = tooltip.select("text").node().getBBox();
+      tooltip.select("rect").attr("width",bb.width+16).attr("height",bb.height+10).attr("y",2);
+      tooltip.attr("transform","translate("+(e.offsetX+10)+","+(e.offsetY-20)+")");
+    }).on("mouseout", function() {
+      link.attr("stroke","#1ABFB044").attr("stroke-width",function(d){return d.strength});
+      node.selectAll("circle").attr("fill","#1ABFB0").attr("r",function(d){return 6+d.count*2});
+      tooltip.style("display","none");
+    });
+
+    simulation.on("tick", function() {
+      link.attr("x1",function(d){return d.source.x}).attr("y1",function(d){return d.source.y})
+        .attr("x2",function(d){return d.target.x}).attr("y2",function(d){return d.target.y});
+      node.attr("transform", function(d){return "translate("+d.x+","+d.y+")"});
+    });
+  }, []);
+  return React.createElement("svg", { ref: svgRef, width: "100%", height: 500, style: { background: C.OCEAN_DARK, borderRadius: 12, border: "1px solid " + C.REEF_TEAL + "22" } });
+}
+
+// =====================================================
+// ACTION TRACKER COMPONENT
+// =====================================================
+function ActionTracker() {
+  var _s = React.useState("all"), catFilter = _s[0], setCatFilter = _s[1];
+  var _s2 = React.useState("all"), statusFilter = _s2[0], setStatusFilter = _s2[1];
+  var cats = ["all"].concat([...new Set(ACTION_ITEMS.map(function(a){return a.category}))].sort());
+  var statuses = ["all","in-progress","planned","done","ongoing"];
+  var filtered = ACTION_ITEMS.filter(function(a) {
+    return (catFilter === "all" || a.category === catFilter) && (statusFilter === "all" || a.status === statusFilter);
+  });
+  var statusColors = {"in-progress":"#FF9800","planned":"#2196F3","done":"#4CAF50","ongoing":"#9C27B0"};
+  var statusIcons = {"in-progress":"⏳","planned":"📋","done":"✅","ongoing":"🔄"};
+
+  return React.createElement("div", { style: { marginTop: 20 } },
+    React.createElement("h2", { style: { fontFamily: "'Fraunces', serif", fontSize: 22, color: C.PEARL, marginBottom: 6 } }, "Action Item Tracker"),
+    React.createElement("p", { style: { fontSize: 13, color: C.MIST, marginBottom: 16 } }, filtered.length + " of " + ACTION_ITEMS.length + " action items shown"),
+    React.createElement("div", { style: { display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 } },
+      cats.map(function(c) { return React.createElement("button", { key: c, onClick: function(){setCatFilter(c)}, style: {
+        padding: "4px 12px", borderRadius: 16, border: "1px solid " + (catFilter===c ? C.REEF_TEAL : "#334"),
+        background: catFilter===c ? C.REEF_TEAL+"33" : "transparent", color: catFilter===c ? C.REEF_CYAN : C.MIST,
+        fontSize: 11, cursor: "pointer", fontFamily: "'DM Sans', sans-serif"
+      }}, c)})
+    ),
+    React.createElement("div", { style: { display: "flex", gap: 6, marginBottom: 16 } },
+      statuses.map(function(s) { return React.createElement("button", { key: s, onClick: function(){setStatusFilter(s)}, style: {
+        padding: "4px 10px", borderRadius: 12, border: "1px solid " + (statusFilter===s ? (statusColors[s]||C.REEF_TEAL) : "#334"),
+        background: statusFilter===s ? (statusColors[s]||C.REEF_TEAL)+"22" : "transparent",
+        color: statusFilter===s ? (statusColors[s]||C.REEF_CYAN) : C.MIST,
+        fontSize: 11, cursor: "pointer", fontFamily: "'DM Sans', sans-serif"
+      }}, (statusIcons[s]||"") + " " + s)})
+    ),
+    filtered.map(function(a, i) {
+      return React.createElement("div", { key: i, style: { padding: "10px 14px", marginBottom: 6, background: C.OCEAN_MID, borderRadius: 8, borderLeft: "3px solid " + (statusColors[a.status]||C.MIST), display: "flex", gap: 10, alignItems: "flex-start" } },
+        React.createElement("span", { style: { fontSize: 14, flexShrink: 0 } }, statusIcons[a.status] || ""),
+        React.createElement("div", { style: { flex: 1 } },
+          React.createElement("div", { style: { fontSize: 13, color: C.PEARL, lineHeight: 1.45 } }, a.action),
+          React.createElement("div", { style: { fontSize: 11, color: C.MIST, marginTop: 4, display: "flex", gap: 8, flexWrap: "wrap" } },
+            React.createElement("span", null, "Day " + a.day),
+            React.createElement("span", { style: { color: statusColors[a.category] || C.REEF_TEAL } }, a.category),
+            React.createElement("span", null, a.owner)
+          )
+        )
+      );
+    })
+  );
+}
+
+// =====================================================
+// AI CHAT COMPONENT
+// =====================================================
+function AIChatView() {
+  var _s = React.useState([]), messages = _s[0], setMessages = _s[1];
+  var _s2 = React.useState(""), input = _s2[0], setInput = _s2[1];
+  var _s3 = React.useState(false), loading = _s3[0], setLoading = _s3[1];
+
+  // Build context from all talk data
+  var contextStr = "You are a helpful assistant answering questions about the 2nd Island Health & Sustainability Conference (IHS 2025), held 18-20 November 2025 at Gump Station, Moorea, French Polynesia. Here is the conference data:\n\n";
+  allTalks.forEach(function(t) {
+    contextStr += "Day " + t.day + " | " + t.sessionTime + " | " + t.speaker + " (" + t.affil + ") | " + t.title + " | " + t.desc;
+    var nk = t.speaker + "|" + t.title;
+    if (MEETING_NOTES[nk]) contextStr += " | NOTES: " + MEETING_NOTES[nk];
+    contextStr += "\n";
+  });
+  contextStr += "\nACTION ITEMS:\n";
+  ACTION_ITEMS.forEach(function(a) { contextStr += "- [Day " + a.day + "/" + a.category + "/" + a.status + "] " + a.action + " (Owner: " + a.owner + ")\n"; });
+
+  function sendMessage() {
+    if (!input.trim() || loading) return;
+    var newMessages = messages.concat([{role: "user", content: input}]);
+    setMessages(newMessages);
+    setInput("");
+    setLoading(true);
+
+    fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1000,
+        system: contextStr,
+        messages: newMessages.map(function(m){return {role:m.role, content:m.content}})
+      })
+    }).then(function(r){return r.json()}).then(function(data) {
+      var reply = data.content && data.content[0] && data.content[0].text || "Sorry, I couldn't process that.";
+      setMessages(function(prev){return prev.concat([{role:"assistant",content:reply}])});
+      setLoading(false);
+    }).catch(function() {
+      setMessages(function(prev){return prev.concat([{role:"assistant",content:"Error connecting to AI. Please try again."}])});
+      setLoading(false);
+    });
+  }
+
+  var suggestions = ["What were the key themes of the conference?", "What action items relate to seaweed?", "How do the four missions connect?", "What did Gilman propose about governance?", "Who discussed data sovereignty?"];
+
+  return React.createElement("div", { style: { marginTop: 20, display: "flex", flexDirection: "column", height: "calc(100vh - 200px)" } },
+    React.createElement("h2", { style: { fontFamily: "'Fraunces', serif", fontSize: 22, color: C.PEARL, marginBottom: 6 } }, "Ask About the Conference"),
+    React.createElement("p", { style: { fontSize: 13, color: C.MIST, marginBottom: 12 } }, "Ask questions about any session, speaker, theme, or action item from IHS 2025."),
+    messages.length === 0 && React.createElement("div", { style: { display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 16 } },
+      suggestions.map(function(s) {
+        return React.createElement("button", { key: s, onClick: function(){setInput(s)}, style: {
+          padding: "6px 12px", borderRadius: 16, border: "1px solid " + C.REEF_TEAL + "44",
+          background: "transparent", color: C.REEF_CYAN, fontSize: 12, cursor: "pointer", fontFamily: "'DM Sans', sans-serif"
+        }}, s);
+      })
+    ),
+    React.createElement("div", { style: { flex: 1, overflowY: "auto", marginBottom: 12 } },
+      messages.map(function(m, i) {
+        return React.createElement("div", { key: i, style: { marginBottom: 12, display: "flex", justifyContent: m.role === "user" ? "flex-end" : "flex-start" } },
+          React.createElement("div", { style: {
+            maxWidth: "80%", padding: "10px 14px", borderRadius: 12,
+            background: m.role === "user" ? C.REEF_TEAL + "33" : C.OCEAN_MID,
+            border: "1px solid " + (m.role === "user" ? C.REEF_TEAL + "44" : "rgba(200,216,232,0.08)"),
+            fontSize: 13, color: C.PEARL, lineHeight: 1.6, fontFamily: "'DM Sans', sans-serif", whiteSpace: "pre-wrap"
+          }}, m.content)
+        );
+      }),
+      loading && React.createElement("div", { style: { color: C.MIST, fontSize: 13, padding: 10 } }, "Thinking...")
+    ),
+    React.createElement("div", { style: { display: "flex", gap: 8 } },
+      React.createElement("input", { type: "text", value: input, onChange: function(e){setInput(e.target.value)},
+        onKeyDown: function(e){if(e.key==="Enter")sendMessage()},
+        placeholder: "Ask about speakers, themes, actions...",
+        style: { flex: 1, padding: "12px 16px", borderRadius: 10, border: "1px solid " + C.REEF_TEAL + "44", background: C.OCEAN_MID, color: C.PEARL, fontSize: 14, fontFamily: "'DM Sans', sans-serif", outline: "none" }
+      }),
+      React.createElement("button", { onClick: sendMessage, disabled: loading, style: {
+        padding: "12px 20px", borderRadius: 10, border: "none", background: C.REEF_TEAL, color: C.OCEAN_DARK,
+        fontSize: 14, fontWeight: 700, cursor: loading ? "wait" : "pointer", fontFamily: "'DM Sans', sans-serif"
+      }}, "Send")
     )
   );
 }

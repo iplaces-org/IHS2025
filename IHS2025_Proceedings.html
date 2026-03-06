@@ -217,7 +217,7 @@ el("div",{style:{marginBottom:28,paddingBottom:20,borderBottom:"1px solid "+V.ru
 el("span",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,fontWeight:700,letterSpacing:"0.12em",color:V.ink2,textTransform:"uppercase"}},"Keywords: "),
 el("span",{style:{fontSize:14,color:V.ink4,fontStyle:"italic"}},(t.tags||[]).join(", "))),
 el("div",{style:{marginTop:24,paddingTop:16,borderTop:"1px solid "+V.ruleL,fontFamily:"'IBM Plex Mono',monospace",fontSize:9,color:V.ink4,lineHeight:1.6}},
-el("strong",{style:{color:V.ink3}},"Cite as: "),t.speaker+" (2025). \u201c"+t.title+".\u201d ",el("em",null,"IHS Proceedings"),", Vol. 2, Moorea, French Polynesia."))}
+el("strong",{style:{color:V.ink3}},"Reference: "),el("span",null,t.speaker+" (2025). "+t.title+". In N. Davies (Ed.), "),el("em",null,"Proceedings of the 2nd Island Health & Sustainability Conference"),el("span",null,". Gump South Pacific Research Station, Moorea, French Polynesia.")))}
 
 function ThreadsView(props){
 var el=React.createElement;

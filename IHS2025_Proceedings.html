@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IHS Proceedings Vol. 2 (2025)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Outfit',system-ui,sans-serif;color:#0f172a;background:#fefcf9;line-height:1.6}
+::selection{background:#99f6e4;color:#0f172a}::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:#d6cfc4;border-radius:2px}
+a{color:#0d9488;text-decoration:none}a:hover{text-decoration:underline}
+@media print{.no-print{display:none!important}article{break-inside:avoid}body{background:#fff}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/javascript">
+var useState=React.useState;
+var V={ink:"#0f172a",ink2:"#1e293b",ink3:"#475569",ink4:"#94a3b8",teal:"#0d9488",tealDk:"#0f766e",tealLt:"#99f6e4",coral:"#e76f51",violet:"#7c3aed",ivory:"#faf8f4",cream:"#f1ece2",paper:"#fefcf9",rule:"#d6cfc4",ruleL:"#e8e2d8"};
+var dc=["#0d9488","#e76f51","#7c3aed"];
+var IP="https://ipsandbox.rslv.xyz/";
+var EXEC="The 2nd Island Health and Sustainability Conference convened from 18 to 20 November 2025 at the UC Berkeley Gump South Pacific Research Station in Moorea, French Polynesia. Organized under the auspices of RESIPOL, the French Polynesian Research, Higher Education, and Innovation Consortium, the conference brought together over 50 participants from local institutions, Pacific Island communities, and international research organizations to advance collaborative research addressing urgent sustainability challenges facing island social-ecological systems.\\n\\nBuilding on the inaugural 2024 conference, this second edition focused on translating scientific knowledge into actionable strategies aligned with French Polynesia’s Climate Plan and Innovation Strategy. The conference was structured around four interconnected missions: food systems transformation, renewable energy development through seaweed bioeconomy, land-sea resilience, and public health through elimination of vector-borne disease. These missions served as organizing frameworks for three days of keynotes, panel sessions, breakout discussions, and collaborative project development.\\n\\nDay 1, themed “Island Bioeconomies: From Missions to Markets,” opened with a keynote by Nils Gilman of the Berggruen Institute on planetary governance, followed by presentations from each RESIPOL member institution. Sessions explored the blue bioeconomy, including seaweed diversity, oyster aquaculture, biofuel life-cycle assessment, and blue carbon market standards. Breakout sessions allowed participants to develop mission-specific action plans.\\n\\nDay 2, “Communities of Inquiry,” examined the governance, educational, and social infrastructures needed to support island sustainability. A keynote by David Zilberman on bioeconomy and innovation was followed by sessions on biocultural stewardship, social license to operate, scholarly publication ethics, and educational programs including the Marine Educational Areas model and the proposed Ocean Environmental Leadership Program. The Social Capital Foundation led a workshop on impact measurement using theory-of-change frameworks.";
+var PS={"Island Earth: Governing in the Planetary Age":"Gilman presented the central thesis of his book, co-authored with Jonathan S. Blake, arguing that existing governance structures rooted in 17th-century concepts of state sovereignty are inadequate for addressing planetary-scale challenges. He introduced the concept of planetary sapience and proposed functional sovereign entities operating across national boundaries on specific issues, citing the IAEA as precedent. He advocated for multi-species flourishing as an ethical ideal and highlighted small islands like Moorea as laboratories for new governance approaches.","Innovative Approaches to Vector-Borne Disease":"Bossin presented ILM's work on controlling mosquito-borne diseases in French Polynesia, where dengue, Zika, and chikungunya remain persistent threats. He outlined the Sterile Insect Technique and related genetic approaches being developed to suppress Aedes aegypti populations through the PacSIT WHO-sponsored program across Tetiaroa, Papara, and the Cook Islands.","Exploring Tropical Seaweed Diversity":"Zubia presented a comprehensive overview of tropical seaweed diversity in French Polynesia, which harbors approximately 531 species. She emphasized that tropical seaweeds are among the least-studied marine organisms, highlighted their cultural significance in Pacific traditions, and described multi-marker DNA barcoding across French overseas territories. Research on bioactive compounds showed applications in nutraceuticals, cosmetics, and biostimulants for agriculture.","Te Ora Fenua | Te Mauri Ora":"Correa presented her program on coral reef health and marine biodiversity research, emphasizing the integration of genomics and environmental monitoring. She discussed the importance of working with local communities and ethical considerations of genomic data collection, noting collaboration with Jane Anderson on data governance frameworks.","Advancing Tropical Oyster Farming":"Monaco presented IFREMER's work on sustainable oyster aquaculture. He highlighted that 80% of food is imported to FP with over 50% of emissions from transport. Two native species were identified genetically, with S. echinata reaching commercial size in 16 months. A solar-tide system combats Polydora parasite infestation, and the species show high climate change resilience.","Zone Atelier FP":"Bambridge presented the Zone Atelier French Polynesia program, a long-term social-ecological research initiative under the CNRS framework focusing on the interplay between social and ecological dynamics across archipelagos, with emphasis on traditional governance systems (rahui) and contemporary marine management.","Biodiversity Strategy for FP":"Ducatez presented the urgent case for a comprehensive biodiversity strategy, noting that 8.5% of all bird species extinct globally over 500 years were French Polynesian endemics. He analyzed failures of global targets and argued for locally adapted, measurable objectives, outlining a prioritization framework balancing impact, importance, and feasibility.","Eliminating Mosquito-Borne Disease":"Montell presented genetic research improving the Sterile Insect Technique. His lab identified the trpVa gene as critical for mating — mutant males are deaf and unable to fertilize females. Impairing vision paradoxically increases male competitiveness. He also presented IR007, a safe natural repellent providing over 12 hours of protection.","Land-Sea Resilience":"Bambridge and Ducatez presented the Land-Sea Resilience mission focusing on 124 islands with 4,500 km of coastline. A workshop with 50 participants identified 39 long-term monitoring programs and 11 databases. Future directions include COCOPOL, a multi-million-euro program on contaminants in the land-sea continuum.","Transforming Island Food Systems by 2030":"Lison de Loma presented a 5–10 year food systems mission aligned with FP's strategic development agenda, addressing import dependency, climate instability, and fragmented value chains. Target sectors are schools and tourism, with foundations in organic certification, responsible fisheries, and public health nutrition.","Decarbonizing FP Using Seaweed":"Correa mapped the potential for seaweed-based biofuels to displace FP's approximately 350 million liters of annual fossil fuel imports, outlining how macroalgae cultivation could produce biofuels with lower carbon intensity while avoiding land-use conflicts.","International Bioeconomy & Macroalgae Center":"Coates presented the vision for an international bioeconomy center focused on macroalgae, drawing lessons from Indonesia as the world's leading tropical seaweed producer. He connected upstream production challenges to downstream biorefinery concepts including biofuels, bioplastics, and food products.","Blue Natural Capital":"Takoko introduced blue natural capital through whale conservation, discussing the ecological and economic value of cetacean populations including nutrient cycling and carbon sequestration, and advocated for governance frameworks recognizing marine species' rights and personhood.","Life Cycle Assessment: Biofuel from Macroalgae":"Scolari presented a life-cycle assessment framework for seaweed-based biofuel in FP. Conventional fossil fuels have a carbon intensity of 92–97 gCO₂e/MJ. Marine-feedstock biofuels avoid land-use competition, freshwater requirements, and fertilizer inputs, potentially offering a low-carbon alternative.","Blue Bioeconomy in Aotearoa New Zealand":"Bradly presented New Zealand's experience catalyzing blue economy innovation through a five-stage model. Ventures include Save Our Scallops (combining restoration, aquaculture, and fishery management), ORA Reefs, and Blue Nature Aotearoa ocean leadership mentorship.","Taro and Carbon Sequestration":"Kahn presented archaeological research on traditional taro cultivation systems and their role in carbon sequestration, examining the historical relationship between taro agriculture and marine ecosystems and demonstrating climate co-benefits of traditional Polynesian land management.","Land-Sea Restoration: Coral":"Stewart presented Coral Gardeners' community-driven coral restoration work on Moorea, connecting reef rehabilitation with local livelihoods and tourism.","Marine Resources and Island Innovation":"Lo presented FP's fisheries management perspective and innovation strategies, connecting government policy frameworks to the conference's bioeconomy themes.","Blue Carbon Market Standards":"Conte presented blue carbon market standards, examining frameworks for valuing and trading credits from marine and coastal ecosystems as potential financing mechanisms for island sustainability.","Bioeconomy, Innovation, & Environmental Leadership":"Zilberman provided a comprehensive bioeconomy framework distinguishing three elements: natural resources for food/fuel/chemicals, modern technologies, and sustainable development. He categorized bioeconomy types and emphasized that it is built supply chain by supply chain, with constraints spanning technological, economic, policy, environmental, social, and geopolitical dimensions.","Biocultural Restoration, Stewardship, and Governance":"Winter presented biocultural restoration focusing on social-ecological systems. Drawing on He'eia NERR in Hawai'i, he demonstrated how Indigenous practices constitute ecomimicry — habitat engineering and trophic management producing sustainable abundance. Historical evidence shows Indigenous aquaculture increased reef fish abundance.","Social License to Operate":"Hill presented SLO research in California's seaweed sector, using a pyramid from rejection to endorsement. Three barriers identified: regulatory/permitting challenges, environmental uncertainty, and community acceptance. She provided strategies for building legitimacy through stakeholder engagement.","Rights and Representation, Including More Than Human":"Anderson addressed legal and ethical frameworks for recognizing rights of nature and non-human entities, discussing the Local Contexts initiative and its Traditional Knowledge and Biocultural Labels for Indigenous data sovereignty.","Whales: From Personhood to Indigenous Governance":"Takoko discussed the movement toward legal personhood for whales and how Indigenous Pacific governance frameworks provide models for non-human rights recognition, presenting the Moananui initiative for Indigenous-led marine sanctuaries.","Mapping Research Outputs: Tetiaroa":"Stoll and Fischer presented geospatial research on Tetiaroa including new equipment and 1955–2025 satellite imagery. Their analysis found 10/13 motu stable with no warming effect detected. Fischer presented an XGBoost ML pipeline for automated shoreline extraction with cross-atoll transfer learning.","Documenting Research Compliance":"Marchioni presented compliance approaches for the UN BBNJ treaty, proposing that the Standard Batch Identifier system should leverage existing local systems using sealed envelopes of metadata that preserve local control while providing integrity for relying parties.","Accelerating Research to Education":"Essey presented Kudu's AI-powered educational platform replacing textbooks with human-AI co-created content. UCLA's first AI-curated course demonstrated improved engagement. Future developments include KAI, a course-specific assistant for instant feedback and individualized content.","iPlace(s) Data Trust":"Vieglais presented the iPlaces Alliance addressing contextual collapse — where research outputs lose connection to place. The platform tracks applications, facilitates stakeholder dialogue, links outputs back to place, and supports Indigenous governance through Local Context Labels.","Atitia Center — 20 Years":"Murphy presented the Atitia Center's two-decade journey preserving and transmitting Polynesian cultural knowledge through educational programs integrating traditional ecological knowledge with contemporary science.","Measuring AI & Math Interventions":"Kusenko presented independent validation of AI-powered learning tools, demonstrating improved student engagement and outcomes.","Educational Marine Areas":"Marakai presented the EMA program born in FP in 2012, now including 29 zones, 31 schools, 2,500+ students across four archipelagos. Built on knowing, living, and transmitting. Since 2016 expanded to France with 200,000+ students.","Workforce Development: California Lessons":"Hill drew lessons from California's agricultural sector using the baby carrot innovation story to show how new product forms transform industries, and discussed circularity where farm waste becomes revenue streams.","Ocean ELP":"The team presented the proposed Ocean ELP extending Berkeley's 25-year Beahrs program to the Pacific, anchored in Moorea, building capacity among mid-career island and ocean leaders. It addresses a gap in ocean-focused, Pacific-grounded leadership training.","Measuring Impact":"Kleykamp led a workshop on impact measurement from a funder's perspective, introducing theory-of-change frameworks distinguishing inputs, activities, outputs, outcomes, and impact. Participants worked through exercises for the four missions.","Tetiaroa CASUP: The First 10 Years":"Rowland and Murphy reviewed CASUP's first decade as a voluntary conservation plan delegated to a nonprofit. Surveys revealed that local stakeholders emphasized community engagement while international experts focused on funding and enforcement, setting the stage for CASUP 2.0.","CASUP 2.0: The Next 10 Years":"Tate presented CASUP 2.0 planning including steering committee establishment, plan review, survey results, and development timeline building on ten years of lessons.","Palmyra":"Wegmann presented Palmyra's conservation progress: rat eradication, coconut palm removal, seabird habitat restoration, and the reintroduction of Guam Kingfishers extinct in the wild for 35 years.","Tereheamanu":"Wencélius and Bambridge presented the Tereheamanu community of communes in southern Tahiti, a pilot site since 2025. Citizen consultation identified needs spanning water, energy, health, and food sovereignty, envisioning a territory of resilience.","Hawai’i":"Donahue and Bruno presented the Hawaiian 4Site component centered on Coconut Island (HIMB), discussing challenges of coordinating place-based research across institutions.","From Transects to Knowledge Transects":"Mawyer proposed knowledge transects sampling how observations, models, and practices are distributed across islands, disciplines, and communities. Explicitly FAIR and CARE-compliant, anchoring data in place, history, and power relations.","Honu Submarine Sea Station":"Bailey presented the vision for Honu, an innovative underwater research platform advancing marine science capabilities in French Polynesia.","Voice of the Ocean":"Murphy presented on ocean stewardship from an Indigenous Polynesian perspective, emphasizing cultural and spiritual connections between Pacific peoples and the sea.","Moananui: Indigenous-Led Marine Sanctuaries":"Takoko presented the Moananui initiative for Indigenous-led marine sanctuaries as alternatives to state-imposed protection regimes.","Traditional Council Rapa Nui":"Huke presented Rapa Nui's traditional governance systems, tracing authority from pre-contact through colonization to contemporary sovereignty reclamation over marine and terrestrial resources.","Pacific Islands Development Program":"Hattori presented PIDP, which since 1980 has assisted Pacific leaders through capacity building and policy research. As CROP member and PICL secretariat, it connects 20 entities advancing sustainability, gender equality, and cultural practices.","Mapping Indigenous Seas":"Bambridge and Mawyer revealed that WDPA records 6 points (114 km²) for FP while their research found 252 active features totaling 27,413 km². They identified jurisdictional overlap, land-sea overlap, and structural illegibility as fundamental problems, calling for an epistemic shift toward bioculturally-grounded bioeconomies."};
+var N={"Nils Gilman|Island Earth: Governing in the Planetary Age":"Key Arguments: (1) human exceptionalism and (2) Westphalian sovereignty both failing. Solutions: planetary subsidiarity; translocal networks (C40); functional institutions (IAEA precedent); multi-species flourishing.\n\nDiscussion: Bailey asked how supranational agencies emerge. Gilman: 75\u201390% compliance transformative; crises drive change.\n\nACTION: Explore Moorea/FP as model for planetary subsidiarity.","Herv\u00e9 Bossin|Innovative Approaches to Vector-Borne Disease":"ILM 76 years. 15 species, 3 invasive cause all disease. SIT industrial facility. PacSIT (WHO): Tetiaroa April 2025, Papara Nov 2025, Cook Islands next. The Brando: premium for mosquito-free.\n\nACTION: Economists for SIT cost modeling.\nACTION: Hawaii avian malaria collaboration.","Mayalen Zubia|Exploring Tropical Seaweed Diversity":"531 species: 320 red, 119 green, 92 brown. 95% funding temperate. >1,000 DNA sequences; herbarium >5,000. Cultural: ho\u2019opono pono. NOT phycocolloids \u2014 Turbinaria alginates, >50 edible species, bioactives, biorefinery. REMU (2024\u20132028). Asparagopsis for methane.\n\nACTION: Spore banking.\nACTION: Sanitary assessments.\nACTION: Innovation funding.","Adrienne Correa|Te Ora Fenua | Te Mauri Ora":"BioCode 2.0: draft genomes 6\u201330 organisms. Schools/communities FIRST. \u2018Rori\u2019 sea cucumber model. Lessons: translator funding, iterative consent.\n\nACTION: Local Contexts labels.\nACTION: Materials in French/Tahitian.","Cristian Monaco & Guillaume Mitta|Advancing Tropical Oyster Farming":"80% food imported; >50% emissions from transport. Two native oysters, 16 months commercial. Solar-tide vs Polydora. Carbon: individual CO\u2082 vs community sequestration.\n\nACTION: Research community-level carbon sequestration.","Tamatoa Bambridge|Zone Atelier FP":"Took 2 years; previous attempts failed. ~100\u2013150 researchers. \u2018S\u2019 (social) key. Covers entire EEZ. Co-designing essential.\n\nACTION: Build network across FP.","Simon Ducatez|Biodiversity Strategy for FP":"14 extinct endemics (8.5% global). 15/26 endemic birds EN/CR. Aichi failed. No measurable FP framework. Prioritize: impact \u00d7 importance \u00d7 feasibility.\n\nACTION: Measurable objectives.\nACTION: Recovery plans with communities.","Craig Montell|Eliminating Mosquito-Borne Disease":"trpVa: deaf males 0% fertilization. Blind males outcompete wild-type. IR007: 3 EPA components, >12h (DEET ~4.5h), <$0.14/oz. VectorFree.\n\nACTION: Montell-Bossin collaboration.","Tamatoa Bambridge & Simon Ducatez|Land-Sea Resilience":"4,500 km coastline, 124 islands. Workshop: 50+6, 27 presentations. 39 programs, 11 databases, 35 actors. COCOPOL: ~\u20ac2M, 5\u20138yr, >30 researchers.\n\nACTION: France-Berkeley Fund.\nACTION: Complete proceedings.","Thierry Lison de Loma|Transforming Island Food Systems by 2030":"5\u201310yr. Schools + tourism. BioPasifika. Full value chain. Participatory democracy via iPlaces.\n\nACTION: Mission timeline.\nACTION: Identify pilot islands.","Thiago Correa|Decarbonizing FP Using Seaweed":"~350M liters fossil fuels. Ethanol ~10% substitution.\n\nACTION: Connect with Zubia and Scolari.","John Coates|International Bioeconomy & Macroalgae Center":"IBMC vision. Indonesia model. Seaweed as circular bioeconomy feedstock.","Mere Takoko|Blue Natural Capital":"Blue natural capital via whales. Nutrient cycling, carbon sequestration. Rights/personhood governance.","David Scolari|Life Cycle Assessment: Biofuel from Macroalgae":"Fossil: ~92\u201397 gCO\u2082e/MJ. Renewables cut conversion 90%+. Co-products displace imports.\n\nACTION: Complete FP-specific LCA.","Nigel Bradly|Blue Bioeconomy in Aotearoa New Zealand":"Origination to Scale. Save Our Scallops with Iwi. ORA Reefs. Blue Nature Aotearoa.\n\nACTION: FP-NZ collaboration.","Jenny Kahn|Taro and Carbon Sequestration":"Traditional taro-marine relationship. Resilient food with climate co-benefits.","Hannah Stewart|Land-Sea Restoration: Coral":"Coral Gardeners Moorea. Community-driven restoration.","Cedrik Lo|Marine Resources and Island Innovation":"Government fisheries. Policy-bioeconomy connection.","Adrien Conte|Blue Carbon Market Standards":"Blue carbon frameworks. Financing for sustainability.\n\nACTION: Evaluate FP ecosystems.","David Zilberman|Bioeconomy, Innovation, & Environmental Leadership":"Bio = resources + tech + sustainability. Supply chain thinking. Circular. Moorea solutions.\n\nACTION: Supply chain framework per mission.","Kawika Winter|Biocultural Restoration, Stewardship, and Governance":"Social-ecological restoration. He\u2019eia NERR. Ecomimicry: 8 strategies. Loko i\u2019a = \u0101ina momona. Imu increase abundance.\n\nACTION: NERR model for Moorea/Tetiaroa.","Ali Hill|Social License to Operate":"Pyramid: Rejection to Endorsement. CA: CEQA, environment, community.\n\nACTION: SLO for FP seaweed.","Jane Anderson|Rights and Representation, Including More Than Human":"Non-human rights. Local Contexts Labels.\n\nACTION: Continue for FP.","Mere Takoko|Whales: From Personhood to Indigenous Governance":"Whale personhood. Moananui initiative.","Benoit Stoll & Tobias Fischer|Mapping Research Outputs: Tetiaroa":"1955\u20132025 imagery. 10/13 motu stable. XGBoost + transfer learning. IRD Innovation nominee. Tahuna iti: shift to vegetation to birds.\n\nACTION: Pipeline across FP atolls.","John Marchioni|Documenting Research Compliance":"BBNJ SBI. Trust is local. Sealed envelopes.\n\nACTION: Evaluate for iPlaces.","Warren Essey|Accelerating Research to Education":"Kudu: instructor to AI to iteration. KAI assistant. UCLA validated.\n\nACTION: Kudu for Ocean ELP.","Dave Vieglais|iPlace(s) Data Trust":"Contextual collapse. Submit to review to consent to DOI to track. Phases 2025\u20132027.\n\nACTION: Gump pilot.","Hinano Murphy|Atitia Center \u2014 20 Years":"Trust took 5 years. Tahitian bridge. Ite deodora \u2014 knowledge must be lived.","Alex Kusenko|Measuring AI & Math Interventions":"UCLA/UCSD validation. Improved engagement.","Vainui Marakai|Educational Marine Areas":"29 zones, 2,500+ students. Know/Live/Transmit. France: 200,000+.\n\nACTION: Connect EMA with iPlaces.","Ali Hill|Workforce Development: California Lessons":"Baby carrot innovation. Circularity. Place-based design.\n\nACTION: Baby carrot thinking for seaweed.","Tchiou, White Davies & Lison de Loma|Ocean ELP":"No Pacific ocean program exists. 10\u201314 days Moorea. South\u2013South learning.\n\nACTION: Curriculum and funding.","Lolo Kleykamp|Measuring Impact":"ToC: inputs to outputs to outcomes to impact. Promise outputs, not outcomes.\n\nACTION: Each team complete ToC.","Stanley Rowland & Frank Murphy|Tetiaroa CASUP: The First 10 Years":"Surveys: French 11 vs English 29. PRESERVE/INTEGRATE/FILL GAPS.\n\nACTION: Address priority gaps.","Tj Tate|CASUP 2.0: The Next 10 Years":"Committee: Rowland/Tate. Review to timeline.\n\nACTION: Establish work plan.","Alex Wegmann|Palmyra":"Rat eradication 2011. Coconut removal 75%. Grayback terns breeding. Guam Kingfisher: 9 birds.","Jean Wenc\u00e9lius & Tamatoa Bambridge|Tereheamanu":"Pilot 2025. Citizen consultation: water, energy, health, food.\n\nACTION: Action plan.","Megan Donahue & Michael Bruno|Hawai\u2019i":"HIMB. PI turnover = data chaos. Trust varies.\n\nACTION: Automated tracking.","Alex Mawyer|From Transects to Knowledge Transects":"FAIR+CARE. Ridge-to-reef. 4Site to N-Site. Planetary sapience.\n\nACTION: Minimum standards.","Richard Bailey|Honu Submarine Sea Station":"Two HOVs, 1,200m. Mobile platform.\n\nACTION: Feasibility study.","Hinano Murphy|Voice of the Ocean":"Indigenous ocean stewardship. Fa\u2019e octopus. ISA deep-sea mining.","Mere Takoko|Moananui: Indigenous-Led Marine Sanctuaries":"Indigenous governance. Alternatives to state regimes.","Hetereki Huke|Traditional Council Rapa Nui":"Te Mau Hatu o Rapa Nui. Sovereignty reclamation. Repatriation.","Mary Therese Hattori|Pacific Islands Development Program":"PIDP since 1980. CROP/PICL 20 entities.\n\nACTION: Connect with networks.","Bambridge, Mawyer, Wenc\u00e9lius et al.|Mapping Indigenous Seas":"WDPA: 6 points vs 252 actual, 27,413 km\u00b2. Illegibility structural.\n\nACTION: Map all FP areas.\nACTION: Update WDPA."};
+var TH=[
+{id:"seaweed",nm:"The Seaweed Story",ic:"\uD83C\uDF3F",cl:"#059669",sub:"Biodiversity to bioeconomy",nar:"Seaweed as the most integrative theme \u2014 taxonomy to energy, food, restoration, circular economy.",st:[{s:"Mayalen Zubia",k:"531 species, REMU, Turbinaria biorefinery"},{s:"Thiago Correa",k:"350M liters; ethanol 10%"},{s:"David Scolari",k:"LCA: renewables cut 90%+"},{s:"John Coates",k:"IBMC: Indonesia model"},{s:"Nigel Bradly",k:"NZ 5-stage model"},{s:"Ali Hill",k:"Baby carrot model; SLO; workforce"},{s:"David Zilberman",k:"Supply chains; circular; blue hub"}]},
+{id:"gov",nm:"The Governance Arc",ic:"\u2696",cl:"#7c3aed",sub:"Planetary subsidiarity to Indigenous sovereignty",nar:"Governance at every scale \u2014 planetary institutions to community fish houses.",st:[{s:"Nils Gilman",k:"Planetary subsidiarity; islands as labs"},{s:"Tamatoa Bambridge",k:"Zone Atelier across FP EEZ"},{s:"Kawika Winter",k:"Ecomimicry; CBSFAs; fish houses"},{s:"Jane Anderson",k:"Local Contexts; data sovereignty"},{s:"Mere Takoko",k:"Whale personhood; Moananui"},{s:"Hetereki Huke",k:"Rapa Nui sovereignty"},{s:"Alex Mawyer",k:"252 features vs WDPA 6; illegibility"}]},
+{id:"data",nm:"The Data Challenge",ic:"\uD83D\uDD17",cl:"#0e7490",sub:"Contextual collapse to planetary sapience",nar:"Place-based data infrastructure respecting local sovereignty while enabling global discovery.",st:[{s:"Benoit Stoll & Tobias Fischer",k:"70yr monitoring; ML pipeline"},{s:"John Marchioni",k:"Sealed envelopes; trust is local"},{s:"Dave Vieglais",k:"iPlaces: 2025-2027 rollout"},{s:"Warren Essey",k:"Kudu: research to education"},{s:"Megan Donahue & Michael Bruno",k:"Data out of control"},{s:"Alex Mawyer",k:"Knowledge transects; 4Site to N-Site"}]},
+{id:"health",nm:"The Mosquito Mission",ic:"\uD83E\uDD9F",cl:"#dc2626",sub:"Gene editing to island elimination",nar:"Engineering better sterile males AND a superior repellent.",st:[{s:"Herv\u00e9 Bossin",k:"SIT facility; PacSIT; Brando partnership"},{s:"Craig Montell",k:"trpVa deafness; IR007 >12h; VectorFree"}]},
+{id:"sites",nm:"Sites Ateliers",ic:"\uD83C\uDFDD",cl:"#d97706",sub:"Place-based management at every scale",nar:"From a private atoll to a pan-Pacific network.",st:[{s:"Stanley Rowland & Frank Murphy",k:"CASUP: voluntary nonprofit stewardship"},{s:"Tj Tate",k:"CASUP 2.0"},{s:"Jean Wenc\u00e9lius & Tamatoa Bambridge",k:"Tereheamanu: resilience"},{s:"Alex Mawyer",k:"4Site to N-Site"},{s:"Mary Therese Hattori",k:"PIDP: 20 entities"}]}
+];
+var AI=[
+{a:"Explore Moorea/FP as planetary subsidiarity model",d:1,c:"governance",o:"Conference",s:"in-progress"},
+{a:"SIT cost modeling with economists",d:1,c:"health",o:"Herv\u00e9 Bossin",s:"in-progress"},
+{a:"Hawaii avian malaria collaboration",d:1,c:"health",o:"Herv\u00e9 Bossin",s:"planned"},
+{a:"Spore banking for seaweed strains",d:1,c:"bioeconomy",o:"Mayalen Zubia",s:"planned"},
+{a:"Local Contexts labels for BioCode 2.0",d:1,c:"data",o:"Correa / Anderson",s:"in-progress"},
+{a:"Community-level carbon sequestration research",d:1,c:"bioeconomy",o:"Cristian Monaco",s:"planned"},
+{a:"Measurable FP biodiversity objectives",d:1,c:"conservation",o:"Simon Ducatez",s:"planned"},
+{a:"Montell-Bossin engineered sterile males",d:1,c:"health",o:"Montell / Bossin",s:"in-progress"},
+{a:"France-Berkeley Fund proposal",d:1,c:"resilience",o:"Simon Ducatez",s:"in-progress"},
+{a:"Food systems mission timeline",d:1,c:"food",o:"Thierry Lison de Loma",s:"planned"},
+{a:"FP seaweed-to-biofuel LCA",d:1,c:"energy",o:"David Scolari",s:"in-progress"},
+{a:"Blue carbon potential for FP",d:1,c:"finance",o:"Conte / Bambridge",s:"planned"},
+{a:"Supply chain framework per mission",d:2,c:"bioeconomy",o:"Mission teams",s:"planned"},
+{a:"NERR model for Moorea/Tetiaroa",d:2,c:"governance",o:"Kawika Winter",s:"planned"},
+{a:"SLO for FP seaweed bioeconomy",d:2,c:"bioeconomy",o:"Ali Hill",s:"planned"},
+{a:"Local Contexts labels for FP research",d:2,c:"data",o:"Jane Anderson",s:"in-progress"},
+{a:"iPlaces pilot for Gump Station",d:2,c:"data",o:"Vieglais / Robinson",s:"in-progress"},
+{a:"Ocean ELP curriculum and funding",d:2,c:"education",o:"Tchiou / White Davies",s:"in-progress"},
+{a:"Theory of Change per mission",d:2,c:"logistics",o:"Mission teams",s:"in-progress"},
+{a:"Blue Carbon project proposal",d:2,c:"finance",o:"Tamatoa Bambridge",s:"in-progress"},
+{a:"iPlaces technical architecture",d:2,c:"data",o:"Robinson / Vieglais",s:"in-progress"},
+{a:"CASUP 2.0 priority gaps",d:3,c:"conservation",o:"CASUP committee",s:"in-progress"},
+{a:"Tereheamanu action plan",d:3,c:"governance",o:"Wenc\u00e9lius / Bambridge",s:"planned"},
+{a:"N-Site minimum standards",d:3,c:"data",o:"Alex Mawyer",s:"planned"},
+{a:"Map all FP marine areas",d:3,c:"data",o:"Bambridge / Mawyer",s:"in-progress"},
+{a:"Update WDPA for FP",d:3,c:"data",o:"Bambridge / Mawyer",s:"planned"},
+{a:"iPlaces technical specification",d:3,c:"data",o:"Robinson / Vieglais",s:"in-progress"}
+];
+var days=[
+{num:1,date:"18 November",theme:"Island Bioeconomies",sub:"From Missions to Markets",sessions:[
+{time:"09:10",type:"keynote",talks:[{speaker:"Nils Gilman",affil:"Berggruen Institute",title:"Island Earth: Governing in the Planetary Age",desc:"Planetary subsidiarity; islands as governance laboratories; multi-species flourishing via technology.",tags:["governance","planetary"]}]},
+{time:"09:45",type:"session",chair:"Neil Davies",title:"FP Health & Sustainability Research",talks:[
+{speaker:"Herv\u00e9 Bossin",affil:"Institut Louis Malard\u00e9",title:"Innovative Approaches to Vector-Borne Disease",desc:"Industrial-scale Sterile Insect Technique. PacSIT WHO program across Tetiaroa, Papara, Cook Islands.",tags:["health","SIT"]},
+{speaker:"Mayalen Zubia",affil:"Univ. French Polynesia",title:"Exploring Tropical Seaweed Diversity",desc:"531 seaweed species in FP. High-value alginates, over fifty edible species, biorefinery concept.",tags:["seaweed","bioeconomy","biodiversity"]},
+{speaker:"Adrienne Correa",affil:"UC Berkeley",title:"Te Ora Fenua | Te Mauri Ora",desc:"BioCode 2.0 draft genomes. Going to schools and communities first, before research.",tags:["genomics","culture"]},
+{speaker:"Cristian Monaco & Guillaume Mitta",affil:"IFREMER",title:"Advancing Tropical Oyster Farming",desc:"80% food imported. Two native oyster species, 16 months to commercial size.",tags:["aquaculture","food"]},
+{speaker:"Tamatoa Bambridge",affil:"CNRS",title:"Zone Atelier FP",desc:"Long-term social-ecological research covering the entire FP EEZ.",tags:["governance","monitoring"]},
+{speaker:"Simon Ducatez",affil:"IRD",title:"Biodiversity Strategy for FP",desc:"14 extinct endemic birds. 8.5% of global extinctions. Measurable strategy needed.",tags:["biodiversity","conservation"]}]},
+{time:"11:30",type:"session",chair:"Thierry Lison de Loma",title:"Introduction to IH&S Missions",talks:[
+{speaker:"Craig Montell",affil:"UC Santa Barbara",title:"Eliminating Mosquito-Borne Disease",desc:"Blind males outcompete wild-type. IR007 repellent: 12+ hours, safe, cheap.",tags:["health","genetics"]},
+{speaker:"Tamatoa Bambridge & Simon Ducatez",affil:"CRIOBE / IRD",title:"Land-Sea Resilience",desc:"39 monitoring programs mapped across 124 islands. COCOPOL project proposed.",tags:["resilience","land-sea"]},
+{speaker:"Thierry Lison de Loma",affil:"Vaihuti Fresh",title:"Transforming Island Food Systems by 2030",desc:"Double organic production, 100% sustainable fishing, 50% organic in schools/tourism.",tags:["food","agriculture"]},
+{speaker:"Thiago Correa",affil:"UC Berkeley",title:"Decarbonizing FP Using Seaweed",desc:"350M liters fossil fuel imported. Seaweed ethanol could substitute 10%.",tags:["energy","biofuel"]}]},
+{time:"12:30",type:"keynote",talks:[{speaker:"John Coates",affil:"UC Berkeley",title:"International Bioeconomy & Macroalgae Center",desc:"IBMC vision connecting upstream seaweed production to downstream biorefinery.",tags:["bioeconomy","IBMC"]}]},
+{time:"14:00",type:"keynote",talks:[{speaker:"Mere Takoko",affil:"Pacific Whale Fund",title:"Blue Natural Capital",desc:"Marine ecosystems as foundational natural capital for Pacific communities.",tags:["marine","whales"]}]},
+{time:"14:30",type:"session",chair:"Larry Tchiou",title:"Te Ara Moana",talks:[
+{speaker:"David Scolari",affil:"UC Berkeley",title:"Life Cycle Assessment: Biofuel from Macroalgae",desc:"Fossil: 92-97 gCO2e/MJ. Renewables cut conversion 90%+.",tags:["LCA","biofuel"]},
+{speaker:"Nigel Bradly",affil:"Envirostrat NZ",title:"Blue Bioeconomy in Aotearoa New Zealand",desc:"Five-stage model. Save Our Scallops, ORA Reefs, Ocean Leaders.",tags:["New Zealand","blue economy"]},
+{speaker:"Jenny Kahn",affil:"William & Mary",title:"Taro and Carbon Sequestration",desc:"Traditional taro cultivation with climate co-benefits.",tags:["taro","carbon"]},
+{speaker:"Hannah Stewart",affil:"Coral Gardeners",title:"Land-Sea Restoration: Coral",desc:"Community-driven reef restoration on Moorea.",tags:["coral","restoration"]},
+{speaker:"Cedrik Lo",affil:"Direction des Ressources Marines",title:"Marine Resources and Island Innovation",desc:"Government marine resource management.",tags:["policy","fisheries"]}]},
+{time:"17:00",type:"keynote",talks:[{speaker:"Adrien Conte",affil:"IRD, La R\u00e9union",title:"Blue Carbon Market Standards",desc:"Frameworks for marine/coastal carbon credits.",tags:["carbon","finance"]}]}
+]},
+{num:2,date:"19 November",theme:"Communities of Inquiry",sub:"Governance, Knowledge, Education",sessions:[
+{time:"09:00",type:"keynote",talks:[{speaker:"David Zilberman",affil:"UC Berkeley",title:"Bioeconomy, Innovation, & Environmental Leadership",desc:"Bioeconomy built one supply chain at a time. Moorea: seaweed nutrient capture, algae wastewater, food waste conversion.",tags:["bioeconomy","supply chain"]}]},
+{time:"09:30",type:"session",chair:"Tamatoa Bambridge",title:"Governance & Stewardship",talks:[
+{speaker:"Kawika Winter",affil:"Univ. Hawai\u2019i",title:"Biocultural Restoration, Stewardship, and Governance",desc:"Social-ecological restoration. He\u2019eia NERR. Fish houses increase nearshore biomass.",tags:["biocultural","restoration"]},
+{speaker:"Ali Hill",affil:"UC Berkeley",title:"Social License to Operate",desc:"SLO pyramid. Three barriers to California seaweed: regulatory, environmental, community.",tags:["SLO","seaweed"]},
+{speaker:"Jane Anderson",affil:"NYU",title:"Rights and Representation, Including More Than Human",desc:"Local Contexts labels for Indigenous data sovereignty.",tags:["rights","ethics"]},
+{speaker:"Mere Takoko",affil:"Pacific Whale Fund",title:"Whales: From Personhood to Indigenous Governance",desc:"Whale personhood movement. Moananui initiative.",tags:["whales","Indigenous"]}]},
+{time:"10:30",type:"session",chair:"Neil Davies",title:"Informing Decision-Makers",talks:[
+{speaker:"Benoit Stoll & Tobias Fischer",affil:"Univ. French Polynesia",title:"Mapping Research Outputs: Tetiaroa",desc:"70 years monitoring. ML pipeline with transfer learning. Sentinel atoll.",tags:["GIS","Tetiaroa","ML"]},
+{speaker:"John Marchioni",affil:"iPlaces Alliance",title:"Documenting Research Compliance",desc:"Trust is local. Sealed envelopes of metadata for BBNJ compliance.",tags:["compliance","iPlaces"]},
+{speaker:"Warren Essey",affil:"Kudu (remote)",title:"Accelerating Research to Education",desc:"Human-designed, AI-refined content. UCLA validated.",tags:["AI","education"]},
+{speaker:"Dave Vieglais",affil:"NCEAS / iPlaces",title:"iPlace(s) Data Trust",desc:"Contextual collapse solution. Phased 2025-2027 rollout.",tags:["iPlaces","data","FAIR"]}]},
+{time:"11:30",type:"keynote",talks:[{speaker:"Hinano Murphy",affil:"Te Pu Atitia",title:"Atitia Center \u2014 20 Years",desc:"Trust took five years. Ite deodora: knowledge must be lived.",tags:["culture","education","trust"]}]},
+{time:"12:00",type:"session",chair:"Maheata White Davies",title:"Education & Training",talks:[
+{speaker:"Alex Kusenko",affil:"UCLA (remote)",title:"Measuring AI & Math Interventions",desc:"Independent validation of AI-powered learning outcomes.",tags:["AI","education"]},
+{speaker:"Vainui Marakai",affil:"DGEE",title:"Educational Marine Areas",desc:"29 zones, 2,500+ students. Know/Live/Transmit.",tags:["education","marine"]},
+{speaker:"Ali Hill",affil:"UC Berkeley",title:"Workforce Development: California Lessons",desc:"Baby-cut carrot transformed an industry. Lesson for seaweed.",tags:["workforce","bioeconomy"]},
+{speaker:"Tchiou, White Davies & Lison de Loma",affil:"Moorea Innovation Hub / Gump / Vaihuti",title:"Ocean ELP",desc:"Extending Berkeley Beahrs ELP to the Pacific. 10-14 days Moorea.",tags:["leadership","ELP","Pacific"]}]},
+{time:"14:00",type:"panel",chair:"Neil Davies & Erin Robinson",title:"Impact Framework",talks:[{speaker:"Lolo Kleykamp",affil:"Social Capital Foundation",title:"Measuring Impact",desc:"Theory of Change. Outputs vs outcomes. IMM workshop.",tags:["impact","funding"]}]}
+]},
+{num:3,date:"20 November",theme:"Sites Ateliers",sub:"Place-Based Science in Action",sessions:[
+{time:"09:00",type:"keynote",talks:[{speaker:"Stanley Rowland & Frank Murphy",affil:"Tetiaroa Society",title:"Tetiaroa CASUP: The First 10 Years",desc:"Voluntary plan, nonprofit steward. Preserve, Integrate, Fill Gaps.",tags:["Tetiaroa","CASUP"]}]},
+{time:"09:30",type:"session",chair:"Jayna DeVore",title:"4Site Network",talks:[
+{speaker:"Tj Tate",affil:"Tetiaroa Society",title:"CASUP 2.0: The Next 10 Years",desc:"Steering committee roadmap from stakeholder surveys.",tags:["Tetiaroa","CASUP"]},
+{speaker:"Alex Wegmann",affil:"TNC (remote)",title:"Palmyra",desc:"Rat eradication, seabird restoration, Guam Kingfisher reintroduction.",tags:["Palmyra","conservation"]},
+{speaker:"Jean Wenc\u00e9lius & Tamatoa Bambridge",affil:"CRIOBE",title:"Tereheamanu",desc:"Community of municipalities building a territory of resilience.",tags:["Tereheamanu","resilience"]},
+{speaker:"Megan Donahue & Michael Bruno",affil:"HIMB / Univ. Hawai\u2019i",title:"Hawai\u2019i",desc:"Data management crisis. PI turnover. Trust varies by system.",tags:["Hawai\u2019i","4Site"]},
+{speaker:"Alex Mawyer",affil:"Univ. Hawai\u2019i (remote)",title:"From Transects to Knowledge Transects",desc:"FAIR+CARE convergence. 4Site to N-Site. Stations as planetary sapience.",tags:["4Site","FAIR","CARE"]}]},
+{time:"11:30",type:"keynote",talks:[{speaker:"Richard Bailey",affil:"Tetiaroa Society / Pacific Beachcomber",title:"Honu Submarine Sea Station",desc:"Two HOVs rated 1,200m for deep ocean research.",tags:["Honu","deep-sea"]}]},
+{time:"11:45",type:"session",chair:"Tamatoa Bambridge",title:"Blue Bioeconomies at Ocean Scales",talks:[
+{speaker:"Hinano Murphy",affil:"Te Pu Atitia",title:"Voice of the Ocean",desc:"Indigenous ocean stewardship. Fa\u2019e octopus as cultural symbol.",tags:["ocean","culture"]},
+{speaker:"Mere Takoko",affil:"Pacific Whale Fund",title:"Moananui: Indigenous-Led Marine Sanctuaries",desc:"Indigenous governance as alternative to state MPAs.",tags:["Indigenous","sanctuaries"]},
+{speaker:"Hetereki Huke",affil:"Conseil Coutumier Rapa Nui",title:"Traditional Council Rapa Nui",desc:"Sovereignty reclamation from pre-contact to present.",tags:["Rapa Nui","sovereignty"]},
+{speaker:"Mary Therese Hattori",affil:"East-West Center",title:"Pacific Islands Development Program",desc:"PIDP connecting 20 Pacific entities since 1980.",tags:["PIDP","Pacific"]},
+{speaker:"Bambridge, Mawyer, Wenc\u00e9lius et al.",affil:"CNRS-CRIOBE / Univ. Hawai\u2019i",title:"Mapping Indigenous Seas",desc:"WDPA: 6 points vs 252 actual features, 27,000+ km\u00b2. Illegibility is structural.",tags:["Indigenous","mapping","WDPA"]}]}
+]}
+];
+var allTalks=[];days.forEach(function(d){d.sessions.forEach(function(s){(s.talks||[]).forEach(function(t){allTalks.push(Object.assign({},t,{day:d.num,dayDate:d.date,sessionTime:s.time,sessionType:s.type,sessionTitle:s.title||"",sessionChair:s.chair||""}))})})});
+
+
+function getSummary(t){
+var key=t.title;
+if(PS[key])return PS[key];
+var keys=Object.keys(PS);
+for(var i=0;i<keys.length;i++){if(key.indexOf(keys[i])>=0||keys[i].indexOf(key)>=0)return PS[keys[i]]}
+return t.desc;
+}
+
+function Cover(props){
+var el=React.createElement;
+return el("div",{style:{minHeight:"100vh",background:V.ink,color:V.ivory,display:"flex",flexDirection:"column",justifyContent:"center",position:"relative",overflow:"hidden"}},
+el("div",{style:{position:"absolute",top:"-20%",right:"-10%",width:"60vw",height:"60vw",borderRadius:"50%",border:"1px solid "+V.teal+"12"}}),
+el("div",{style:{position:"absolute",bottom:"-30%",left:"-15%",width:"70vw",height:"70vw",borderRadius:"50%",border:"1px solid "+V.teal+"08"}}),
+el("div",{style:{position:"absolute",top:"12%",left:"7%",width:1,height:"45%",background:"linear-gradient(transparent,"+V.teal+"30,transparent)"}}),
+el("div",{style:{maxWidth:640,margin:"0 auto",padding:"0 40px",position:"relative",zIndex:1}},
+el("div",{style:{display:"flex",alignItems:"center",gap:16,marginBottom:56}},
+el("div",{style:{width:48,height:1,background:V.teal}}),
+el("span",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:11,letterSpacing:"0.25em",color:V.teal,textTransform:"uppercase"}},"Vol. 2 \u00b7 November 2025")),
+el("h1",{style:{fontFamily:"'Playfair Display',serif",fontSize:60,fontWeight:700,lineHeight:1.02,marginBottom:28,letterSpacing:"-0.025em"}},
+"Island Health",el("br"),el("span",{style:{fontStyle:"italic",fontWeight:400,color:V.tealLt}},"& Sustainability")),
+el("div",{style:{width:56,height:3,background:V.coral,marginBottom:36}}),
+el("p",{style:{fontFamily:"'Crimson Pro',serif",fontSize:20,lineHeight:1.65,color:V.ink4,maxWidth:440}},"Proceedings of the 2nd International Research Conference"),
+el("p",{style:{fontFamily:"'Crimson Pro',serif",fontSize:17,color:V.ink4+"bb",marginTop:8,fontStyle:"italic"}},"Gump South Pacific Research Station \u00b7 Moorea \u00b7 French Polynesia"),
+el("div",{style:{marginTop:56,display:"flex",gap:24,alignItems:"center"}},
+el("button",{onClick:props.onEnter,style:{padding:"14px 40px",background:"transparent",border:"1px solid "+V.teal,color:V.teal,fontFamily:"'IBM Plex Mono',monospace",fontSize:12,letterSpacing:"0.15em",textTransform:"uppercase",cursor:"pointer"}},"Enter Proceedings \u2192"),
+el("a",{href:IP,target:"_blank",rel:"noopener",style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:11,color:V.ink4,letterSpacing:"0.1em",textDecoration:"none",borderBottom:"1px solid "+V.ink4+"33"}},"iPlaces Repository"))),
+el("div",{style:{position:"absolute",bottom:0,left:0,right:0,padding:"20px 40px",display:"flex",justifyContent:"space-between",fontSize:10,color:V.ink4,fontFamily:"'IBM Plex Mono',monospace",letterSpacing:"0.1em"}},
+el("span",null,"RESIPOL \u00b7 UC Berkeley \u00b7 Social Capital Foundation"),
+el("span",null,allTalks.length+" Presentations \u00b7 4 Missions")))}
+
+function TocDay(props){
+var el=React.createElement;
+var day=days[props.dayNum-1];
+if(!day)return null;
+return el("div",{style:{maxWidth:560,margin:"0 auto",padding:"48px 48px 80px"}},
+el("div",{style:{display:"flex",alignItems:"flex-end",gap:16,marginBottom:32}},
+el("span",{style:{fontFamily:"'Playfair Display',serif",fontSize:64,fontWeight:700,color:V.ink,lineHeight:0.75,opacity:0.08}},day.num),
+el("div",{style:{paddingBottom:6}},
+el("div",{style:{fontFamily:"'Playfair Display',serif",fontSize:22,fontWeight:600,color:V.ink,lineHeight:1.1}},day.theme),
+el("div",{style:{fontFamily:"'Crimson Pro',serif",fontSize:13,color:V.ink4,fontStyle:"italic",marginTop:4}},day.date))),
+day.sessions.reduce(function(acc,s){return acc.concat((s.talks||[]).map(function(t){return Object.assign({},t,{sType:s.type,sTime:s.time})}));},[]).map(function(e,i){
+return el("div",{key:i,onClick:function(){props.onSelect(e.speaker+"|"+e.title)},style:{padding:"10px 0",borderTop:i===0?"1px solid "+V.rule:"none",borderBottom:"1px solid "+V.ruleL,cursor:"pointer"}},
+el("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"baseline"}},
+el("span",{style:{fontFamily:"'Crimson Pro',serif",fontSize:16,color:V.ink2}},e.title),
+el("span",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:10,color:V.ink4,marginLeft:16,flexShrink:0}},e.sType==="keynote"?"\u25c6":"\u25c7")),
+el("div",{style:{fontFamily:"'Crimson Pro',serif",fontSize:13,color:V.ink4,marginTop:2}},
+e.speaker,
+e.sType==="keynote"?el("span",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:8,color:dc[day.num-1],letterSpacing:"0.1em",marginLeft:8,textTransform:"uppercase"}},"Keynote"):null))}))}
+
+function ProgramView(){
+var el=React.createElement;
+return el("div",{style:{maxWidth:560,margin:"0 auto",padding:"48px 48px 80px"}},
+el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,letterSpacing:"0.3em",color:V.ink4,textTransform:"uppercase",marginBottom:12}},"Program"),
+days.map(function(day){
+return el("div",{key:day.num,style:{marginBottom:40}},
+el("div",{style:{fontFamily:"'Playfair Display',serif",fontSize:20,fontWeight:600,color:dc[day.num-1],marginBottom:4}},"Day "+day.num+": "+day.theme),
+el("div",{style:{fontFamily:"'Crimson Pro',serif",fontSize:13,color:V.ink4,fontStyle:"italic",marginBottom:12}},day.date+" \u00b7 "+day.sub),
+day.sessions.map(function(s,si){
+return el("div",{key:si,style:{marginBottom:12}},
+el("div",{style:{display:"flex",gap:10,alignItems:"baseline"}},
+el("span",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:11,color:dc[day.num-1]}},s.time),
+el("span",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:8,color:V.ink4,letterSpacing:"0.1em",textTransform:"uppercase"}},
+({keynote:"Keynote",session:"Session",panel:"Panel",breakout:"Breakout"})[s.type]||"")),
+el("div",{style:{fontFamily:"'Crimson Pro',serif",fontSize:14,color:V.ink2,marginTop:2}},s.title||""),
+s.chair?el("div",{style:{fontFamily:"'Crimson Pro',serif",fontSize:12,color:V.ink4,fontStyle:"italic"}},"Chair: "+s.chair):null,
+(s.talks||[]).map(function(t,ti){
+return el("div",{key:ti,style:{fontFamily:"'Crimson Pro',serif",fontSize:13,color:V.ink4,paddingLeft:16,marginTop:2}},t.speaker+" \u2014 "+t.title)
+}))}))}))}
+
+
+function TalkPage(props){
+var el=React.createElement;
+var t=props.talk;
+var summary=getSummary(t);
+return el("div",{style:{maxWidth:680,margin:"0 auto",padding:"48px 48px 64px",fontFamily:"'Crimson Pro',serif"}},
+el("button",{onClick:props.onBack,className:"no-print",style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:10,color:V.teal,background:"none",border:"1px solid "+V.teal+"44",padding:"6px 16px",cursor:"pointer",letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:32}},"\u2190 Back"),
+el("div",{style:{borderTop:"1px solid "+V.ink,marginBottom:24}},
+el("div",{style:{display:"flex",justifyContent:"space-between",paddingTop:8,fontFamily:"'IBM Plex Mono',monospace",fontSize:9,color:V.ink4,letterSpacing:"0.1em"}},
+el("span",null,"IHS PROCEEDINGS VOL. 2"),el("span",null,"NOVEMBER 2025"))),
+el("div",{style:{textAlign:"center",marginBottom:32}},
+el("h1",{style:{fontFamily:"'Playfair Display',serif",fontSize:26,fontWeight:600,color:V.ink,lineHeight:1.3,marginBottom:16}},t.title),
+el("div",{style:{fontSize:16,color:V.ink2,marginBottom:4}},t.speaker),
+el("div",{style:{fontSize:13,color:V.ink4,fontStyle:"italic"}},t.affil),
+el("div",{style:{fontSize:12,color:V.ink4,fontStyle:"italic",marginTop:4}},"Day "+t.day+" \u00b7 "+t.sessionTime+(t.sessionChair?" \u00b7 Chair: "+t.sessionChair:""))),
+el("div",{style:{background:V.ivory,padding:"20px 24px",marginBottom:24,border:"1px solid "+V.ruleL}},
+el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,fontWeight:700,letterSpacing:"0.15em",color:V.ink2,textTransform:"uppercase",marginBottom:8}},"Brief Summary"),
+el("p",{style:{fontSize:15,lineHeight:1.75,color:V.ink3,margin:0}},summary)),
+el("div",{style:{marginBottom:28,paddingBottom:20,borderBottom:"1px solid "+V.ruleL}},
+el("span",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,fontWeight:700,letterSpacing:"0.12em",color:V.ink2,textTransform:"uppercase"}},"Keywords: "),
+el("span",{style:{fontSize:14,color:V.ink4,fontStyle:"italic"}},(t.tags||[]).join(", "))),
+el("div",{style:{marginTop:24,paddingTop:16,borderTop:"1px solid "+V.ruleL,fontFamily:"'IBM Plex Mono',monospace",fontSize:9,color:V.ink4,lineHeight:1.6}},
+el("strong",{style:{color:V.ink3}},"Reference: "),el("span",null,t.speaker+" (2025). "+t.title+". In N. Davies (Ed.), "),el("em",null,"Proceedings of the 2nd Island Health & Sustainability Conference"),el("span",null,". Gump South Pacific Research Station, Moorea, French Polynesia.")))}
+
+function ThreadsView(props){
+var el=React.createElement;
+return el("div",{style:{maxWidth:560,margin:"0 auto",padding:"48px 48px 80px"}},
+el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,letterSpacing:"0.3em",color:V.ink4,textTransform:"uppercase",marginBottom:12}},"Thematic Threads"),
+el("p",{style:{fontFamily:"'Crimson Pro',serif",fontSize:15,color:V.ink4,fontStyle:"italic",marginBottom:40}},"Curated narrative pathways through the conference."),
+TH.map(function(th){
+var matched=[];
+th.st.forEach(function(stop){allTalks.forEach(function(t){
+var already=matched.some(function(m){return m.speaker===t.speaker&&m.title===t.title});
+if(!already&&(t.speaker===stop.s||t.speaker.indexOf(stop.s)>=0||stop.s.indexOf(t.speaker)>=0))matched.push(t)})});
+return el("div",{key:th.id,style:{marginBottom:48}},
+el("div",{style:{display:"flex",alignItems:"flex-end",gap:16,marginBottom:16}},
+el("span",{style:{fontSize:28,opacity:0.7}},th.ic),
+el("div",{style:{paddingBottom:4}},
+el("div",{style:{fontFamily:"'Playfair Display',serif",fontSize:22,fontWeight:600,color:V.ink,lineHeight:1.1}},th.nm),
+el("div",{style:{fontFamily:"'Crimson Pro',serif",fontSize:13,color:V.ink4,fontStyle:"italic",marginTop:4}},th.sub))),
+el("p",{style:{fontFamily:"'Crimson Pro',serif",fontSize:15,color:V.ink3,lineHeight:1.7,marginBottom:20,borderLeft:"2px solid "+th.cl+"33",paddingLeft:16}},th.nar),
+matched.map(function(t,i){
+var tKey=t.speaker+"|"+t.title;
+return el("div",{key:i,onClick:function(){if(props.onSelect)props.onSelect(tKey)},style:{padding:"10px 0",borderTop:i===0?"1px solid "+V.rule:"none",borderBottom:"1px solid "+V.ruleL,cursor:"pointer"}},
+el("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"baseline"}},
+el("span",{style:{fontFamily:"'Crimson Pro',serif",fontSize:16,color:V.ink2}},t.title),
+el("span",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:10,color:th.cl,marginLeft:16,flexShrink:0}},"\u2192")),
+el("div",{style:{fontFamily:"'Crimson Pro',serif",fontSize:13,color:V.ink4,marginTop:2}},t.speaker,
+el("span",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,color:V.ink4,marginLeft:8}},"Day "+t.day)))}))}))
+}
+
+function SearchView(props){
+var el=React.createElement;
+var _s=useState(""),q=_s[0],setQ=_s[1];
+var _s2=useState([]),res=_s2[0],setRes=_s2[1];
+var suggestions=["seaweed","mosquito","governance","CASUP","food systems","coral","Indigenous","iPlaces","carbon","Ocean ELP","whale","biodiversity"];
+function doSearch(query){
+if(!query.trim()){setRes([]);return}
+var terms=query.toLowerCase().split(/\s+/).filter(function(t){return t.length>2});
+var scored=allTalks.map(function(t){
+var nk=t.speaker+"|"+t.title;var notes=N[nk]||"";var ps=getSummary(t);
+var text=(t.speaker+" "+t.title+" "+t.desc+" "+notes+" "+ps+" "+(t.tags||[]).join(" ")).toLowerCase();
+var score=0;terms.forEach(function(term){var m=text.match(new RegExp(term,"gi"));if(m)score+=m.length;if(t.speaker.toLowerCase().indexOf(term)>=0)score+=5;if(t.title.toLowerCase().indexOf(term)>=0)score+=3});
+return{item:t,score:score}}).filter(function(s){return s.score>0}).sort(function(a,b){return b.score-a.score});
+setRes(scored.slice(0,10))}
+return el("div",{style:{maxWidth:560,margin:"0 auto",padding:"48px 48px 80px"}},
+el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,letterSpacing:"0.3em",color:V.ink4,textTransform:"uppercase",marginBottom:12}},"Search"),
+res.length===0&&el("div",{style:{display:"flex",gap:6,flexWrap:"wrap",marginBottom:16}},
+suggestions.map(function(s){return el("button",{key:s,onClick:function(){setQ(s);doSearch(s)},style:{padding:"4px 10px",border:"1px solid "+V.ruleL,background:"transparent",color:V.teal,fontSize:11,cursor:"pointer",fontFamily:"'Crimson Pro',serif"}},s)})),
+el("div",{style:{display:"flex",gap:8,marginBottom:20}},
+el("input",{type:"text",value:q,onChange:function(e){setQ(e.target.value)},onKeyDown:function(e){if(e.key==="Enter")doSearch(q)},placeholder:"Search speakers, topics...",style:{flex:1,padding:"10px 14px",border:"1px solid "+V.rule,background:"#fff",fontSize:14,fontFamily:"'Crimson Pro',serif",outline:"none"}}),
+el("button",{onClick:function(){doSearch(q)},style:{padding:"10px 18px",border:"none",background:V.teal,color:"#fff",fontSize:12,cursor:"pointer",fontFamily:"'IBM Plex Mono',monospace"}},"Go")),
+res.map(function(r,i){var t=r.item;var tKey=t.speaker+"|"+t.title;
+return el("div",{key:i,onClick:function(){if(props.onSelect)props.onSelect(tKey)},style:{padding:"10px 0",borderBottom:"1px solid "+V.ruleL,cursor:"pointer"}},
+el("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"baseline"}},
+el("span",{style:{fontFamily:"'Crimson Pro',serif",fontSize:16,color:V.ink2}},t.title),
+el("span",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:10,color:dc[t.day-1],marginLeft:16,flexShrink:0}},"\u2192")),
+el("div",{style:{fontFamily:"'Crimson Pro',serif",fontSize:13,color:V.ink4,marginTop:2}},t.speaker,
+el("span",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,color:V.ink4,marginLeft:8}},"Day "+t.day)))}))}
+
+function AboutView(props){
+var el=React.createElement;
+return el("div",{style:{maxWidth:560,margin:"0 auto",padding:"48px 48px 80px"}},
+el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,letterSpacing:"0.3em",color:V.ink4,textTransform:"uppercase",marginBottom:12}},"About"),
+el("h2",{style:{fontFamily:"'Playfair Display',serif",fontSize:24,fontWeight:600,color:V.ink,marginBottom:20}},"Island Health & Sustainability Conference"),
+el("div",{style:{fontFamily:"'Crimson Pro',serif",fontSize:14,color:V.ink4,fontStyle:"italic",marginBottom:24}},"2nd Edition \u00b7 18\u201320 November 2025 \u00b7 Gump Station, Moorea, French Polynesia"),
+el("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:32}},
+[{n:"Food Systems",c:"#059669"},{n:"Renewable Energy",c:"#d97706"},{n:"Land-Sea Resilience",c:"#0e7490"},{n:"Public Health",c:"#dc2626"}].map(function(m){
+return el("div",{key:m.n,style:{padding:"14px 20px",border:"1px solid "+V.ruleL,textAlign:"center"}},
+el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:10,color:m.c,fontWeight:600,letterSpacing:"0.06em"}},m.n))})),
+el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,letterSpacing:"0.15em",color:V.teal,textTransform:"uppercase",marginBottom:10,marginTop:16}},"Executive Summary"),
+el("div",{style:{fontFamily:"'Crimson Pro',serif",fontSize:15,lineHeight:1.8,color:V.ink3,whiteSpace:"pre-wrap",marginBottom:32}},EXEC),
+el("div",{style:{display:"flex",gap:8,marginBottom:32}},
+days.map(function(d){
+return el("button",{key:d.num,onClick:function(){props.onDay(d.num)},style:{
+flex:1,padding:"14px 16px",border:"1px solid "+V.ruleL,background:"transparent",cursor:"pointer",textAlign:"left"}},
+el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:10,color:dc[d.num-1],fontWeight:600}},"Day "+d.num),
+el("div",{style:{fontFamily:"'Crimson Pro',serif",fontSize:14,color:V.ink2,marginTop:4}},d.theme))})),
+el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,letterSpacing:"0.15em",color:V.teal,textTransform:"uppercase",marginBottom:10,marginTop:32}},"Program Committee"),
+el("p",{style:{fontFamily:"'Crimson Pro',serif",fontSize:15,lineHeight:1.8,color:V.ink3}},"Neil Davies (Chair), Herv\u00e9 Bossin (ILM), Mayalen Zubia (UPF), Tamatoa Bambridge (CNRS), Guillaume Mitta (IFREMER), Adrienne Correa (UCB), Simon Ducatez (IRD)"),
+el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,letterSpacing:"0.15em",color:V.teal,textTransform:"uppercase",marginBottom:10,marginTop:24}},"Repository"),
+el("p",{style:{fontFamily:"'Crimson Pro',serif",fontSize:15,color:V.ink3}},"Materials archived in the ",el("a",{href:IP,target:"_blank"},"iPlaces platform"),"."),
+el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,letterSpacing:"0.15em",color:V.teal,textTransform:"uppercase",marginBottom:10,marginTop:24}},"License"),
+el("p",{style:{fontFamily:"'Crimson Pro',serif",fontSize:15,color:V.ink3}},"CC BY 4.0"),
+el("div",{style:{marginTop:32,padding:20,background:V.cream}},
+el("div",{style:{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16}},
+[{n:"3",l:"Days"},{n:String(allTalks.length),l:"Presentations"},{n:"4",l:"Missions"},{n:"6",l:"Keynotes"},{n:String(AI.length),l:"Action Items"},{n:"6",l:"Institutions"}].map(function(s){
+return el("div",{key:s.l,style:{textAlign:"center"}},
+el("div",{style:{fontFamily:"'Playfair Display',serif",fontSize:28,fontWeight:700,color:V.ink}},s.n),
+el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:8,color:V.ink4,letterSpacing:"0.12em",textTransform:"uppercase",marginTop:2}},s.l))}))))}
+
+function App(){
+var el=React.createElement;
+var _s=useState("cover"),view=_s[0],setView=_s[1];
+var _s2=useState(null),sel=_s2[0],setSel=_s2[1];
+var _s3=useState(1),dayNum=_s3[0],setDayNum=_s3[1];
+function pick(key){var t=allTalks.find(function(x){return x.speaker+"|"+x.title===key});if(t){setSel(t);setView("talk")}}
+function goAbout(){setView("about");setSel(null)}
+if(view==="cover") return el(Cover,{onEnter:function(){setView("about")}});
+return el("div",{style:{background:V.paper,minHeight:"100vh"}},
+el("div",{className:"no-print",style:{background:V.ink,color:"#fff",fontSize:10,padding:"7px 32px",display:"flex",justifyContent:"space-between",alignItems:"center",fontFamily:"'IBM Plex Mono',monospace",letterSpacing:"0.08em"}},
+el("div",{style:{display:"flex",gap:0,alignItems:"center"}},
+(function(){
+var navItems=["about","program","proceedings","threads","search"];
+var labels={about:"About",program:"Program",proceedings:"Proceedings",threads:"Threads",search:"Search"};
+return navItems.map(function(k){
+if(k==="proceedings"){
+return el("div",{key:k,style:{position:"relative",display:"inline-block"},
+onMouseEnter:function(e){e.currentTarget.querySelector(".ddmenu").style.display="block"},
+onMouseLeave:function(e){e.currentTarget.querySelector(".ddmenu").style.display="none"}},
+el("button",{style:{padding:"7px 12px",background:"none",border:"none",
+borderBottom:(view==="day")?"1px solid "+V.tealLt:"1px solid transparent",
+color:(view==="day")?V.tealLt:V.ink4,
+fontSize:10,cursor:"pointer",fontFamily:"'IBM Plex Mono',monospace",letterSpacing:"0.08em",textTransform:"uppercase"}},"Proceedings ▾"),
+el("div",{className:"ddmenu",style:{display:"none",position:"absolute",top:"100%",left:0,background:V.ink2,border:"1px solid #ffffff15",zIndex:200,minWidth:120,paddingTop:4,paddingBottom:4}},
+[1,2,3].map(function(n){
+return el("button",{key:n,onClick:function(){setDayNum(n);setView("day");setSel(null)},style:{
+display:"block",width:"100%",padding:"6px 14px",background:"none",border:"none",textAlign:"left",
+color:(view==="day"&&dayNum===n)?V.tealLt:V.ink4,
+fontSize:10,cursor:"pointer",fontFamily:"'IBM Plex Mono',monospace",letterSpacing:"0.06em"}},
+"Day "+n+" — "+days[n-1].theme)})))}
+return el("button",{key:k,onClick:function(){setView(k);setSel(null)},style:{padding:"7px 12px",background:"none",border:"none",
+borderBottom:view===k?"1px solid "+V.tealLt:"1px solid transparent",
+color:view===k?V.tealLt:V.ink4,
+fontSize:10,cursor:"pointer",fontFamily:"'IBM Plex Mono',monospace",letterSpacing:"0.08em",textTransform:"uppercase"}},labels[k])})})()),
+el("div",{style:{display:"flex",gap:16,alignItems:"center"}},
+el("button",{onClick:function(){try{window.print()}catch(e){alert("Use your browser menu: File > Print > Save as PDF")}},style:{background:"none",border:"1px solid #fff3",color:"#fff",padding:"3px 14px",cursor:"pointer",fontSize:10,fontFamily:"inherit"}},"\u2b07 Save as PDF"),
+el("a",{href:IP,target:"_blank",rel:"noopener",style:{color:V.tealLt,fontSize:10}},"iPlaces \u2192"))),
+view==="about"&&el(AboutView,{onDay:function(n){setDayNum(n);setView("day")}}),
+view==="day"&&el(TocDay,{dayNum:dayNum,onSelect:pick}),
+view==="talk"&&sel&&el(TalkPage,{talk:sel,onBack:function(){setView("day")}}),
+view==="program"&&el(ProgramView),
+view==="threads"&&el(ThreadsView,{onSelect:pick}),
+view==="search"&&el(SearchView,{onSelect:pick}),
+el("footer",{style:{borderTop:"1px solid "+V.rule,maxWidth:560,margin:"0 auto",padding:"24px 48px"}},
+el("div",{style:{display:"flex",justifyContent:"space-between",fontFamily:"'IBM Plex Mono',monospace",fontSize:9,color:V.ink4,letterSpacing:"0.1em",textTransform:"uppercase"}},
+el("span",null,"IHS Proceedings Vol. 2 \u00b7 CC BY 4.0"),
+el("a",{href:IP,target:"_blank",style:{color:V.teal}},"iPlaces"))))}
+
+ReactDOM.render(React.createElement(App),document.getElementById("root"));
+</script>
+</body>
+</html>

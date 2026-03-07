@@ -29,8 +29,8 @@ var SCF="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwM
 var V={ink:"#0f172a",ink2:"#1e293b",ink3:"#475569",ink4:"#94a3b8",teal:"#0d9488",tealDk:"#0f766e",tealLt:"#99f6e4",coral:"#e76f51",violet:"#7c3aed",ivory:"#faf8f4",cream:"#f1ece2",paper:"#fefcf9",rule:"#d6cfc4",ruleL:"#e8e2d8"};
 var dc=["#0d9488","#e76f51","#7c3aed"];
 var IP="https://ipsandbox.rslv.xyz/";
-var P={hero:"https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=1400&q=80",moorea:"https://images.unsplash.com/photo-1589197331516-4d84b72ebde3?w=1200&q=80",coral:"https://images.unsplash.com/photo-1546026423-cc4642628d2b?w=1200&q=80",ocean:"https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1400&q=80",seaweed:"https://images.unsplash.com/photo-1530053969600-caed2596d242?w=1200&q=80",island:"https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=1200&q=80",sunset:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=80",palm:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80",underwater:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=80"};
-var dayPhotos=[P.ocean,P.moorea,P.sunset];
+var P={hero:"https://www.moorea.berkeley.edu/sites/default/files/styles/topslide/public/2017-11/gump-arial-view.jpg",moorea:"https://www.moorea.berkeley.edu/sites/default/files/styles/topslide/public/2019-04/station-slide.jpg",coral:"https://www.moorea.berkeley.edu/sites/default/files/styles/large/public/2017-12/marine-biology-program%20square.jpg",ocean:"https://www.moorea.berkeley.edu/sites/default/files/styles/large/public/2017-12/gump_view1.jpg",seaweed:"https://www.moorea.berkeley.edu/sites/default/files/styles/topslide/public/2019-04/programs.jpg",island:"https://www.moorea.berkeley.edu/sites/default/files/inline-images/air-tetiaroa.jpg",sunset:"https://www.moorea.berkeley.edu/sites/default/files/inline-images/tetiaroa-ecostation.jpg",palm:"https://www.moorea.berkeley.edu/sites/default/files/styles/topslide/public/2019-04/station-slide.jpg",underwater:"https://www.moorea.berkeley.edu/sites/default/files/styles/large/public/2017-12/marine-biology-program%20square.jpg"};
+var dayPhotos=[P.ocean,P.moorea,P.island];
 var dayThemes=["Island Bioeconomies","Communities of Inquiry","Sites Ateliers"];
 var daySubs=["From Missions to Markets","Governance, Knowledge, Education","Place-Based Science in Action"];
 var dayDates=["Tuesday 18 November","Wednesday 19 November","Thursday 20 November"];
@@ -209,7 +209,7 @@ var el=React.createElement;
 var t=props.talk;
 var summary=getSummary(t);
 var dayIdx=(t.day||1)-1;
-var photo=[P.seaweed,P.coral,P.underwater][dayIdx];
+var photo=[P.seaweed,P.coral,P.island][dayIdx];
 return el("div",{style:{background:V.paper}},
 el("div",{style:{height:340,background:"linear-gradient(to bottom, rgba(15,23,42,0.3), rgba(15,23,42,0.7)), url("+photo+") center/cover",display:"flex",alignItems:"flex-end",padding:"0 0 48px"}},
 el("div",{style:{maxWidth:900,margin:"0 auto",padding:"0 48px",width:"100%"}},

@@ -25,6 +25,7 @@ a:hover{text-decoration:underline}
 <script type="text/javascript">
 var useState=React.useState;
 var useEffect=React.useEffect;
+var SCF="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjQwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjI0MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWZ9PC9zdHlsZT4KICA8IS0tIFRvcCByb3cgLS0+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSIzMCIgcj0iNiIgZmlsbD0iIzFhMWEyZSIvPgogIDx0ZXh0IHg9IjEwMCIgeT0iMzYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMWExYTJlIj5TPC90ZXh0PgogIDxjaXJjbGUgY3g9IjEyMCIgY3k9IjMwIiByPSI2IiBmaWxsPSIjMWExYTJlIi8+CiAgPCEtLSBNaWRkbGUgcm93IC0tPgogIDxjaXJjbGUgY3g9IjYwIiBjeT0iNzAiIHI9IjYiIGZpbGw9IiMxYTFhMmUiLz4KICA8dGV4dCB4PSIxMDAiIHk9Ijc2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzFhMWEyZSI+QzwvdGV4dD4KICA8Y2lyY2xlIGN4PSIxNDAiIGN5PSI3MCIgcj0iNiIgZmlsbD0iIzFhMWEyZSIvPgogIDwhLS0gQm90dG9tIHJvdyAtLT4KICA8Y2lyY2xlIGN4PSI4MCIgY3k9IjExMCIgcj0iNiIgZmlsbD0iIzFhMWEyZSIvPgogIDx0ZXh0IHg9IjEwMCIgeT0iMTE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzFhMWEyZSI+RjwvdGV4dD4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSIxMTAiIHI9IjYiIGZpbGw9IiMxYTFhMmUiLz4KICA8IS0tIFRleHQgLS0+CiAgPHRleHQgeD0iMTAwIiB5PSIxNjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMxYTFhMmUiPlNvY2lhbCBDYXBpdGFsPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMWExYTJlIj5Gb3VuZGF0aW9uPC90ZXh0Pgo8L3N2Zz4K";
 var V={ink:"#0f172a",ink2:"#1e293b",ink3:"#475569",ink4:"#94a3b8",teal:"#0d9488",tealDk:"#0f766e",tealLt:"#99f6e4",coral:"#e76f51",violet:"#7c3aed",ivory:"#faf8f4",cream:"#f1ece2",paper:"#fefcf9",rule:"#d6cfc4",ruleL:"#e8e2d8"};
 var dc=["#0d9488","#e76f51","#7c3aed"];
 var IP="https://ipsandbox.rslv.xyz/";
@@ -170,6 +171,12 @@ el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:8,color:V.ink4,
 el("div",null,
 el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,letterSpacing:"0.15em",color:V.teal,textTransform:"uppercase",marginBottom:12}},"Program Committee"),
 el("p",{style:{fontFamily:"'Crimson Pro',serif",fontSize:15,lineHeight:1.8,color:V.ink3,marginBottom:20}},"Neil Davies (Chair), Herv\u00e9 Bossin (ILM), Mayalen Zubia (UPF), Tamatoa Bambridge (CNRS), Guillaume Mitta (IFREMER), Adrienne Correa (UCB), Simon Ducatez (IRD)"),
+el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,letterSpacing:"0.15em",color:V.teal,textTransform:"uppercase",marginBottom:12,marginTop:28}},"Supported By"),
+el("div",{style:{display:"flex",alignItems:"center",gap:16,marginBottom:8}},
+el("img",{src:SCF,style:{height:56}}),
+el("div",null,
+el("div",{style:{fontFamily:"'Crimson Pro',serif",fontSize:15,color:V.ink2,fontWeight:500}},"Social Capital Foundation"),
+el("div",{style:{fontFamily:"'Crimson Pro',serif",fontSize:13,color:V.ink4,fontStyle:"italic"}},"The Island Sustainability Research Fund at UC Berkeley is supported by the Social Capital Foundation"))),
 el("div",{style:{fontFamily:"'IBM Plex Mono',monospace",fontSize:9,letterSpacing:"0.15em",color:V.teal,textTransform:"uppercase",marginBottom:8,marginTop:20}},"License"),
 el("p",{style:{fontFamily:"'Crimson Pro',serif",fontSize:13,color:V.ink4}},"CC BY 4.0 \u00b7 Materials archived in iPlaces")))))}
 
@@ -396,7 +403,9 @@ view==="threads"&&el(ThreadsPage,{onSelect:pick}),
 view==="search"&&el(SearchPage,{onSelect:pick}),
 el("footer",{style:{borderTop:"1px solid "+V.rule,maxWidth:900,margin:"0 auto",padding:"24px 48px"}},
 el("div",{style:{display:"flex",justifyContent:"space-between",fontFamily:"'IBM Plex Mono',monospace",fontSize:9,color:V.ink4,letterSpacing:"0.1em",textTransform:"uppercase"}},
-el("span",null,"IHS Proceedings Vol. 2 \u00b7 2025 \u00b7 CC BY 4.0"),
+el("div",{style:{display:"flex",alignItems:"center",gap:12}},
+el("img",{src:SCF,style:{height:24,opacity:0.5}}),
+el("span",null,"Supported by Social Capital Foundation \u00b7 IHS Proceedings Vol. 2 \u00b7 2025 \u00b7 CC BY 4.0")),
 el("a",{href:IP,target:"_blank",style:{color:V.teal}},"iPlaces Repository"))))}
 
 ReactDOM.render(React.createElement(App),document.getElementById("root"));
